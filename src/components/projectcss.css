@@ -1,0 +1,13 @@
+body {
+  color: white;
+  padding: 40px;
+  font-family: Arial;
+  text-align: center;
+}
+.bg-primary {
+  background-image: url("img135833.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* opacity: 0.85; */
+}
