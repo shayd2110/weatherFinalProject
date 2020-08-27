@@ -1,11 +1,10 @@
 import React from "react";
 import PortfolioListItem from "./PortfolioListItem.jsx";
-import "./freelancer.css";
-import "./freelancer.min.css";
 
 class PortfolioList extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       portfolioList: [
         { id: 1, url: "img/portfolio/cabin.png" },
@@ -16,6 +15,7 @@ class PortfolioList extends React.Component {
         { id: 6, url: "img/portfolio/submarine.png" }
       ]
     };
+    this.state.portfolioList = props.data;
   }
 
   render() {
@@ -28,9 +28,7 @@ class PortfolioList extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col-lg-12 text-center">
-              <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
-                ערים נבחרות
-              </h2>
+              <h2>ערים נבחרות</h2>
               <hr className="star-primary" />
             </div>
           </div>
@@ -41,6 +39,9 @@ class PortfolioList extends React.Component {
                   imgUrl={list.url}
                   key={list.id}
                   modalName={"projmodal" + list.id}
+                  name={list.name}
+                  lat={list.lat}
+                  lng={list.lng}
                 />
               );
             })}

@@ -1,13 +1,13 @@
-body {
-  color: white;
-  padding: 40px;
-  font-family: Arial;
-  text-align: center;
-}
 .bg-primary {
   background-image: url("img135833.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  padding-top: calc(6rem + 74px);
+  padding-bottom: 6rem;
+  min-width: 992px !important;
+  height: 700px;
+  flex-direction: column !important;
+
   /* opacity: 0.85; */
 }
