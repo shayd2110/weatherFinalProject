@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 /* eslint-disable  */
+=======
+>>>>>>> 9bfe51e9ccae6bb98f21e4e2d7a0917cf68cd420
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// install a JSONP callback for chunk loading
 /******/ 	var parentJsonpFunction = window["webpackJsonp"];
@@ -7987,6 +7990,10 @@
 	  } else {
 	    return nextType === 'object' && prevElement.type === nextElement.type && prevElement.key === nextElement.key;
 	  }
+<<<<<<< HEAD
+=======
+	  return false;
+>>>>>>> 9bfe51e9ccae6bb98f21e4e2d7a0917cf68cd420
 	}
 
 	module.exports = shouldUpdateReactComponent;
@@ -15703,9 +15710,13 @@
 	      reboundMethod.__reactBoundMethod = method;
 	      reboundMethod.__reactBoundArguments = args;
 	      return reboundMethod;
+<<<<<<< HEAD
 		  /* eslint-enable */ /* eslint-disable  */
 		  // eslint-disable-next-line no-mixed-spaces-and-tabs
 		  /* eslint-disable  */
+=======
+	      /* eslint-enable */
+>>>>>>> 9bfe51e9ccae6bb98f21e4e2d7a0917cf68cd420
 	    };
 	  }
 	  return boundMethod;

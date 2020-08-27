@@ -1,10 +1,18 @@
 import React from "react";
 import PortfolioListItem from "./PortfolioListItem.jsx";
+<<<<<<< HEAD
+=======
+import "./freelancer.css";
+import "./freelancer.min.css";
+>>>>>>> 9bfe51e9ccae6bb98f21e4e2d7a0917cf68cd420
 
 class PortfolioList extends React.Component {
   constructor(props) {
     super(props);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9bfe51e9ccae6bb98f21e4e2d7a0917cf68cd420
     this.state = {
       portfolioList: [
         { id: 1, url: "img/portfolio/cabin.png" },
@@ -15,7 +23,10 @@ class PortfolioList extends React.Component {
         { id: 6, url: "img/portfolio/submarine.png" }
       ]
     };
+<<<<<<< HEAD
     this.state.portfolioList = props.data;
+=======
+>>>>>>> 9bfe51e9ccae6bb98f21e4e2d7a0917cf68cd420
   }
 
   render() {
@@ -28,7 +39,13 @@ class PortfolioList extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col-lg-12 text-center">
+<<<<<<< HEAD
               <h2>ערים נבחרות</h2>
+=======
+              <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
+                ערים נבחרות
+              </h2>
+>>>>>>> 9bfe51e9ccae6bb98f21e4e2d7a0917cf68cd420
               <hr className="star-primary" />
             </div>
           </div>
@@ -39,9 +56,12 @@ class PortfolioList extends React.Component {
                   imgUrl={list.url}
                   key={list.id}
                   modalName={"projmodal" + list.id}
+<<<<<<< HEAD
                   name={list.name}
                   lat={list.lat}
                   lng={list.lng}
+=======
+>>>>>>> 9bfe51e9ccae6bb98f21e4e2d7a0917cf68cd420
                 />
               );
             })}

@@ -1,13 +1,25 @@
+<<<<<<< HEAD
+=======
+body {
+  color: white;
+  padding: 40px;
+  font-family: Arial;
+  text-align: center;
+}
+>>>>>>> 9bfe51e9ccae6bb98f21e4e2d7a0917cf68cd420
 .bg-primary {
   background-image: url("img135833.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+<<<<<<< HEAD
   padding-top: calc(6rem + 74px);
   padding-bottom: 6rem;
   min-width: 992px !important;
   height: 700px;
   flex-direction: column !important;
 
+=======
+>>>>>>> 9bfe51e9ccae6bb98f21e4e2d7a0917cf68cd420
   /* opacity: 0.85; */
 }
