@@ -9,9 +9,12 @@ module.exports = {
 		Atomics: "readonly",
 		SharedArrayBuffer: "readonly",
 	},
+	parser: "babel-eslint",
 	parserOptions: {
+		ecmaVersion: 6,
 		ecmaFeatures: {
 			jsx: true,
+			experimentalObjectRestSpread: true,
 		},
 		ecmaVersion: 2018,
 		sourceType: "module",
