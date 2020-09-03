@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { LinkToLogin } from "../components";
+import { LinkToLogin, ErrorNotice } from "../components";
 import api from "../api";
 
 import styled from "styled-components";
@@ -56,7 +57,14 @@ class Signup extends Component {
 			lastName: "",
 			emailAddress: "",
 			password: "",
+			error: false,
+			message: "",
 		};
+		this.toggle = this.toggle.bind(this);
+	}
+
+	toggle() {
+		this.setState({ error: false });
 	}
 
 	handleChangeInputFirstName = async (event) => {
@@ -86,23 +94,46 @@ class Signup extends Component {
 		await api.insertUser(payload).then((res) => {
 			if (res.data.success) {
 				window.alert("User Create successfully");
+				this.setState({
+					error: false,
+					message: "",
+				});
 			} else {
-				window.alert(res.data.message);
+				//window.alert(res.data.message);
+				this.setState({
+					error: !res.data.success,
+					message: res.data.message,
+				});
 			}
-			this.setState({
-				firstName: "",
-				lastName: "",
-				emailAddress: "",
-				password: "",
-			});
+			// this.setState({
+			//   firstName: "",
+			//   lastName: "",
+			//   emailAddress: "",
+			//   password: "",
+			// });
 		});
 	};
 
 	render() {
-		const { firstName, lastName, emailAddress, password } = this.state;
+		const {
+			firstName,
+			lastName,
+			emailAddress,
+			password,
+			error,
+			message,
+		} = this.state;
 		return (
 			<Wrapper>
 				<h3>הרשמה</h3>
+
+				{error ? (
+					<div onClick={this.toggle}>
+						<ErrorNotice error={true} message={message} />
+					</div>
+				) : (
+					""
+				)}
 
 				<Label>:שם פרטי</Label>
 				<InputText

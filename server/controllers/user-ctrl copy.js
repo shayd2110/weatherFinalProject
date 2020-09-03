@@ -29,8 +29,7 @@ createUser = (req, res) => {
 				return res.status(400).json({ success: false, error: err });
 			}
 
-			user
-				.save()
+			user.save()
 				.then(() => {
 					return res.status(201).json({
 						success: true,
@@ -70,8 +69,7 @@ updateUser = async (req, res) => {
 		user.emailAddress = body.emailAddress;
 		user.password = body.password;
 		user.lastUpdate = body.lastUpdate;
-		user
-			.save()
+		user.save()
 			.then(() => {
 				return res.status(200).json({
 					success: true,
@@ -95,7 +93,9 @@ deleteUser = async (req, res) => {
 		}
 
 		if (!user) {
-			return res.status(404).json({ success: false, error: "User not found" });
+			return res
+				.status(404)
+				.json({ success: false, error: "User not found" });
 		}
 
 		return res.status(200).json({ success: true, data: user });
@@ -109,7 +109,9 @@ getUserById = async (req, res) => {
 		}
 
 		if (!user) {
-			return res.status(404).json({ success: false, error: "User not found" });
+			return res
+				.status(404)
+				.json({ success: false, error: "User not found" });
 		}
 		return res.status(200).json({ success: true, data: user });
 	}).catch((err) => console.log(err));
@@ -121,7 +123,9 @@ getUsers = async (req, res) => {
 			return res.status(400).json({ success: false, error: err });
 		}
 		if (!users.length) {
-			return res.status(404).json({ success: false, error: "Users not found" });
+			return res
+				.status(404)
+				.json({ success: false, error: "Users not found" });
 		}
 		return res.status(200).json({ success: true, data: users });
 	}).catch((err) => console.log(err));
@@ -139,8 +143,8 @@ connectUser = async (req, res) => {
 	User.findOne({ emailAddress: req.body.emailAddress }, (err, user) => {
 		if (
 			err ||
-      user == null ||
-      !bcrypt.compareSync(req.body.password, user.password)
+			user == null ||
+			!bcrypt.compareSync(req.body.password, user.password)
 		) {
 			return res.status(200).json({
 				success: false,
@@ -151,8 +155,7 @@ connectUser = async (req, res) => {
 
 		res.cookie("firtName", user.firstName);
 		user.lastLogin = Date.now();
-		user
-			.save()
+		user.save()
 			.then(() => {
 				return res.status(200).json({
 					success: true,

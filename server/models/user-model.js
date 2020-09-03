@@ -19,10 +19,15 @@ const User = new Schema(
 		emailAddress: {
 			type: String,
 			required: "Please enter your email address",
+			unique: true,
 			trim: true,
 			lowercase: true,
 		},
-		password: { type: String, required: "Please enter your password" },
+		password: {
+			type: String,
+			required: "Please enter your password",
+			minlength: 6,
+		},
 		admin: { type: Boolean, default: false },
 		lastLogin: { type: Date, default: Date.now },
 	},
@@ -38,12 +43,53 @@ User.pre("save", function (next) {
 	});
 });
 
-User.methods.comparePassword = function (password, cb) {
-	bcrypt.compare(password, this.password, (err, isMatch) => {
-		if (err) return cb(err);
-		if (!isMatch) return cb(null.isMatch);
-		return cb(null.this);
-	});
+User.methods.comparePassword = function (password, done) {
+	if (bcrypt.compareSync(password, this.password)) {
+		return done({
+			success: true,
+			error: false,
+			message: "password is a match!",
+		});
+	}
+	// bcrypt.compare(password, this.password, (err, isMatch) => {
+	//   if (err)
+	//     return res.status(200).json({
+	//       success: false,
+	//       error: true,
+	//       err: err,
+	//       message: "Error while bcrypt.compare",
+	//     });
+	//   if (!isMatch)
+	//     return res.status(200).json({
+	//       success: false,
+	//       error: false,
+	//       message: "password isn't a match!",
+	//     });
+
+	// });
 };
+
+// User.methods.comparePassword = function (password) {
+//   bcrypt.compare(password, this.password, (err, isMatch) => {
+//     if (err)
+//       return res.status(200).json({
+//         success: false,
+//         error: true,
+//         err: err,
+//         message: "Error while bcrypt.compare",
+//       });
+//     if (!isMatch)
+//       return res.status(200).json({
+//         success: false,
+//         error: false,
+//         message: "password isn't a match!",
+//       });
+//     return res.status(200).json({
+//       success: true,
+//       error: false,
+//       message: "password is a match!",
+//     });
+//   });
+// };
 
 module.exports = mongoose.model("users", User);

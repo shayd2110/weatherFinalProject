@@ -1,6 +1,9 @@
 /* eslint-disable no-unused-vars */
 
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
+import { Link } from "react-router-dom";
+import ErrorNotice from "../components/ErrorNotice";
+import UserContext from "../context/user-context";
 import api from "../api";
 
 import styled from "styled-components";
@@ -34,20 +37,29 @@ const Button = styled.button.attrs({
 class Login extends Component {
 	constructor(props) {
 		super(props);
-
+		//const [userData, setUserData] = useContext(UserContext);
 		this.state = {
 			emailAddress: "",
 			password: "",
+			isChecked: false,
+			error: false,
+			message: "",
+			//userData: userData,
 		};
+		this.toggle = this.toggle.bind(this);
 	}
 
 	componentDidMount = async () => {
 		this.setState({ isLoading: true });
 
-		await api.getCookieUser().then((res) => {
-			window.alert(res.data.message);
-		});
+		// await api.getCookieUser().then((res) => {
+		//   window.alert(res.data.message);
+		// });
 	};
+
+	toggle() {
+		this.setState({ error: false });
+	}
 
 	handleChangeInputEmail = async (event) => {
 		const emailAddress = event.target.value;
@@ -59,29 +71,54 @@ class Login extends Component {
 		this.setState({ password });
 	};
 
-	handleIncludeUser = async () => {
-		const { emailAddress, password } = this.state;
-		const payload = { emailAddress, password };
+	handleChangeInputChecked = async (event) => {
+		let isChecked = !this.state.isChecked;
+		//this.setState({ isChecked: isChecked });
+		this.state.isChecked = isChecked;
+		console.log(this.state.isChecked);
+	};
 
+	handleIncludeUser = async () => {
+		const { emailAddress, password, isChecked } = this.state;
+		const payload = { emailAddress, password, checked: isChecked };
+		console.log("payload", payload);
 		await api.connectUser(payload).then((res) => {
 			if (res.data.success) {
 				window.alert("User Login successfully");
+				console.log("ok", res.data);
+				localStorage.setItem("auth-token", res.data.token);
+				window.location.reload(true);
 			} else {
-				window.alert(`User Login failed: ${res.data.message}`);
+				console.log("lala", res.data);
+				//window.alert(`User Login failed: ${res.data.message}`);
+				this.setState({
+					error: !res.data.success,
+					message: res.data.message,
+				});
+				//console.log("state", this.state);
 			}
 
-			this.setState({
-				emailAddress: "",
-				password: "",
-			});
+			// this.setState({
+			//   emailAddress: "",
+			//   password: "",
+			//   isChecked: false,
+			// });
+
+			// console.log(this.state);
 		});
 	};
 
 	render() {
-		const { emailAddress, password } = this.state;
+		const { emailAddress, password, error, message } = this.state;
+		console.log("state", this.state);
 		return (
 			<Wrapper>
 				<h3>התחברות</h3>
+				{error ? (
+					<div onClick={this.toggle}>
+						<ErrorNotice message={message} />
+					</div>
+				) : null}
 
 				<Label>:כתובת אימייל</Label>
 				<InputText
@@ -107,12 +144,14 @@ class Login extends Component {
 					<div className="custom-control custom-checkbox">
 						<input
 							type="checkbox"
+							onChange={this.handleChangeInputChecked}
+							defaultChecked={this.state.isChecked}
 							className="custom-control-input"
-							id="customCheck1"
+							id="rememberMe"
 						/>
 						<label
 							className="custom-control-label"
-							htmlFor="customCheck1"
+							htmlFor="rememberMe"
 						>
 							זכור אותי
 						</label>

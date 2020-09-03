@@ -17,8 +17,7 @@ createCity = (req, res) => {
 		return res.status(400).json({ success: false, error: err });
 	}
 
-	city
-		.save()
+	city.save()
 		.then(() => {
 			return res.status(201).json({
 				success: true,
@@ -41,7 +40,9 @@ deleteCity = async (req, res) => {
 		}
 
 		if (!city) {
-			return res.status(404).json({ success: false, error: "City not found" });
+			return res
+				.status(404)
+				.json({ success: false, error: "City not found" });
 		}
 
 		return res.status(200).json({ success: true, data: city });
@@ -54,7 +55,9 @@ getCities = async (req, res) => {
 			return res.status(400).json({ success: false, error: err });
 		}
 		if (!cities.length) {
-			return res.status(404).json({ success: false, error: "City not found" });
+			return res
+				.status(404)
+				.json({ success: false, error: "City not found" });
 		}
 		return res.status(200).json({ success: true, data: cities });
 	}).catch((err) => console.log(err));
