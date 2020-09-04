@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../context/user-context";
 import styled from "styled-components";
-import api from "../api";
+//import api from "../api";
 
 const Collapse = styled.div.attrs({
 	className: "collpase navbar-collapse",

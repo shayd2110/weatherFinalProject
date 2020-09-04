@@ -20,7 +20,7 @@ module.exports = {
 		sourceType: "module",
 	},
 	plugins: ["react"],
-	ignorePatterns: ["temp.js", "**/vendor.js"],
+	ignorePatterns: ["**/node_modules", "temp.js", "**/vendor.js"],
 	rules: {
 		indent: ["error", "tab"],
 		"linebreak-style": ["error", "unix"],
