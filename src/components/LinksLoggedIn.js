@@ -18,6 +18,10 @@ const Item = styled.div.attrs({
 
 export default function Links() {
 	const { userData, setUserData } = useContext(UserContext);
+	// const navbarStyle = {
+	// 	float: "right !important",
+	// 	marginRight: -15,
+	// };
 
 	console.log("userData", userData);
 	const logout = () => {
@@ -32,7 +36,7 @@ export default function Links() {
 	return (
 		<>
 			<Link
-				className="navbar-brand text-white js-scroll-trigger"
+				className=" navbar-header navbar-brand text-white js-scroll-trigger "
 				href="#page-top"
 				to={"/"}
 			>
@@ -59,6 +63,38 @@ export default function Links() {
 								התנתק/י
 							</a>
 						</Link>
+					</Item>
+					<Item>
+						<a
+							className=" py-3 px-0 px-lg-3 rounded js-scroll-trigger text-white"
+							href="#portfolio"
+						>
+							ערים נבחרות
+						</a>
+					</Item>
+					<Item>
+						<a
+							className="py-3 px-0 px-lg-3 rounded js-scroll-trigger text-white"
+							href="#about"
+						>
+							אודות
+						</a>
+					</Item>
+					<Item>
+						<a
+							className="py-3 px-0 px-lg-3 rounded js-scroll-trigger text-white"
+							href="#contact"
+						>
+							מפת ערי ישראל
+						</a>
+					</Item>
+					<Item>
+						<a
+							className="py-3 px-0 px-lg-3 rounded js-scroll-trigger text-white"
+							href="#portfolio"
+						>
+							ערים נבחרות
+						</a>
 					</Item>
 				</List>
 			</Collapse>

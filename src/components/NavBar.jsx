@@ -4,6 +4,7 @@ import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
 
 import { Links, LinksLoggedIn, Logo } from "./";
+import HomeNavBar from "./HomeNavBar";
 
 const Container = styled.div.attrs({
 	className: "container",

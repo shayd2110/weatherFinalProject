@@ -11,6 +11,7 @@
 		"@testing-library/user-event": "^7.2.1",
 		"axios": "^0.20.0",
 		"bootstrap": "^4.5.2",
+		"nodemon": "^2.0.4",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
 		"react-router": "^5.2.0",
@@ -22,7 +23,7 @@
 		"yup": "^0.29.3"
 	},
 	"scripts": {
-		"start": "react-scripts start",
+		"start": "set PORT=8000 && react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"

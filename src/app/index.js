@@ -67,12 +67,7 @@ function App() {
 					<AuthWrapper>
 						<AuthInner>
 							<Switch>
-								<Route
-									exact
-									path="/Home"
-									exact
-									component={Home}
-								/>
+								<Route exact path="/" exact component={Home} />
 							</Switch>
 						</AuthInner>
 					</AuthWrapper>
