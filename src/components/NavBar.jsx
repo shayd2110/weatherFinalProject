@@ -1,50 +1,45 @@
-import React from "react";
+import React, { useContext } from "react";
+import UserContext from "../context/user-context";
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import styled from "styled-components";
 
-class NavBar extends React.Component {
-	render() {
-		return (
-			<nav className="navbar navbar-default navbar-fixed-top">
-				<div className="container">
-					<div className="navbar-header page-scroll">
-						<button
-							type="button"
-							className="navbar-toggle"
-							data-toggle="collapse"
-							data-target="#bs-example-navbar-collapse-1"
-						>
-							<span className="sr-only">Toggle navigation </span>
-							<span className="icon-bar"></span>
-							<span className="icon-bar"></span>
-							<span className="icon-bar"></span>
-						</button>
-						<a className="navbar-brand" href="#page-top">
-							מזג-אוויר ישראל
-						</a>
-					</div>
+import { Links, LinksLoggedIn, Logo } from "./";
+import HomeNavBar from "./HomeNavBar";
 
-					<div
-						className="collapse navbar-collapse"
-						id="bs-example-navbar-collapse-1"
-					>
-						<ul className="nav navbar-nav navbar-right">
-							<li className="hidden">
-								<a href="#page-top"></a>
-							</li>
-							<li className="page-scroll">
-								<a href="#portfolio">ערים נבחרות</a>
-							</li>
-							<li className="page-scroll">
-								<a href="#about">אודות</a>
-							</li>
-							<li className="page-scroll">
-								<a href="#contact">מפת ערי ישראל</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		);
-	}
+const Container = styled.div.attrs({
+	className: "container",
+})``;
+
+const Nav = styled.nav.attrs({
+	className: "navbar navbar-expand-lg navbar-light text-uppercase fixed-top ",
+})`
+	margin-bottom: 20 px;
+`;
+
+// const funcComp2 = () => {
+//   const [userData, setUserData] = useContext(UserContext);
+
+//   if (userData) return <NavBar userData={userData} isLoggedIn={true} />;
+//   return <NavBar userData={userData} />;
+// };
+
+// const WhichNavBar2 = () => {
+//   const [userData, setUserData] = useContext(UserContext);
+//   console.log("userData: ", this.state.isLoggedIn);
+//   if (userData) return <NavBar userData={userData} isLoggedIn={true} />;
+//   return <NavBar userData={userData} />;
+// };
+
+function NavBar() {
+	const context = useContext(UserContext).userData;
+	return (
+		<Container>
+			<Nav>
+				<Logo />
+				{context.loggedIn ? <LinksLoggedIn /> : <Links />}
+			</Nav>
+		</Container>
+	);
 }
 
 export default NavBar;
