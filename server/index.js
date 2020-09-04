@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 require("dotenv").config();
+// eslint-disable-next-line no-unused-vars
 const path = require("path");
 const cookieParser = require("cookie-parser");
 
@@ -16,6 +17,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(cookieParser());
 // server port (herko or loacl)
+// eslint-disable-next-line no-undef
 const apiPort = process.env.PORT || 3000;
 
 // set up mongoes.

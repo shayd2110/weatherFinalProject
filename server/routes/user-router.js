@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const express = require("express");
 const passport = require("passport");
 const passportConfig = require("../passport");
@@ -8,14 +9,14 @@ const UserAuth = require("../middelware/auth");
 const router = express.Router();
 
 const signToken = (userID) => {
-  return JWT.sign(
-    {
-      iss: "NoobCoder",
-      sub: userID,
-    },
-    "NoobCoder",
-    { expiresIn: "1h" }
-  );
+	return JWT.sign(
+		{
+			iss: "NoobCoder",
+			sub: userID,
+		},
+		"NoobCoder",
+		{ expiresIn: "1h" }
+	);
 };
 
 //router.get("/", UserCtrl.getCookieUser);
@@ -54,13 +55,13 @@ router.get("/", UserAuth.auth, UserCtrl.getUserById);
 // );
 
 router.get(
-  "/logout",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    console.log("Or");
-    res.clearCookie("access_token");
-    res.json({ user: { emailAddress: "", admin: "" }, success: true });
-  }
+	"/logout",
+	passport.authenticate("jwt", { session: false }),
+	(req, res) => {
+		console.log("Or");
+		res.clearCookie("access_token");
+		res.json({ user: { emailAddress: "", admin: "" }, success: true });
+	}
 );
 
 module.exports = router;
