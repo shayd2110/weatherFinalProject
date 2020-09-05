@@ -12,5 +12,5 @@ jobs:
             - uses: actions/setup-node@v2-beta
               with:
                   version: 12
-            - run: cd ./client &&  echo " current path: $(pwd)" && npm ci && npm run test:lint
-            - run: cd ./server &&  echo " current path: $(pwd)" && npm ci && npm run test:lint
+            - run: cd ./client &&  echo "current path :$(pwd)" && npm ci && npm run test:lint
+            - run: cd ./server &&  echo "current path :$(pwd)" && npm ci && npm run test:lint
