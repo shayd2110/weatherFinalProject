@@ -13,5 +13,4 @@ jobs:
               with:
                   version: 12
             - run: npm ci
-            - run: cd client
-            - run: npm run test:lint
+            - run: cd client && npm run test:lint
