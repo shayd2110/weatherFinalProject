@@ -1,0 +1,21 @@
+// Import Custom Variables (Overrides Default Bootstrap Variables)
+@import 'variables.scss';
+
+// Import Bootstrap
+@import "bootstrap/scss/bootstrap.scss";
+
+// Custom Components
+@import 'divider.scss';
+@import 'page.scss';
+@import 'navbar.scss';
+@import 'home.scss';
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
