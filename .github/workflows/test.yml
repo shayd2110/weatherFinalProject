@@ -12,4 +12,4 @@ jobs:
             - uses: actions/setup-node@v2-beta
               with:
                   version: 12
-            - run: cd ./client &&  echo "$(pwd)" && npm ci && run test:lint
+            - run: cd ./client &&  echo "$(pwd)" && npm ci && npm run test:lint
