@@ -12,5 +12,5 @@ jobs:
             - uses: actions/setup-node@v2-beta
               with:
                   version: 12
-            - run: cd ./client && npm ci
-            - run: cd ./client && npm run test:lint
+            - run: cd client && npm ci
+            - run: cd client && npm run test:lint
