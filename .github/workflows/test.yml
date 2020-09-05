@@ -12,5 +12,6 @@ jobs:
             - uses: actions/setup-node@v2-beta
               with:
                   version: 12
-            - run: cd ./client &&  echo "$(pwd)"
+            - run: cd ./client #&&  echo "$(pwd)"
+            - run: echo "$(pwd)"
             #- run: run test:lint
