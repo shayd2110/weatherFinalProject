@@ -13,3 +13,4 @@ jobs:
               with:
                   version: 12
             - run: cd ./client &&  echo "$(pwd)" && npm ci && npm run test:lint
+            - run: cd ./server &&  echo "$(pwd)" && npm ci && npm run test:lint
