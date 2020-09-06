@@ -1,7 +1,6 @@
 module.exports = {
 	env: {
 		browser: true,
-		es2021: true,
 		node: true,
 	},
 	extends: ["eslint:recommended", "plugin:react/recommended"],
@@ -19,5 +18,6 @@ module.exports = {
 		quotes: ["error", "double"],
 		semi: ["error", "always"],
 		"no-undef": "off",
+		"no-unused-vars": "off",
 	},
 };

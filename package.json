@@ -2,9 +2,9 @@
 	"name": "weatherfinalproject",
 	"version": "1.0.0",
 	"description": "\"final project\"",
-	"main": "./server/index.js",
+	"main": "./server/inde ",
 	"dependencies": {
-		"eslint": "^7.8.1"
+		"eslint": "^6.6.0"
 	},
 	"devDependencies": {},
 	"scripts": {

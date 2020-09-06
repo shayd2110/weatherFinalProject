@@ -10,28 +10,73 @@ const passportConfig = require("../passport");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
 
-const SECRET = "LalaDadaCoder";
+const nameRegex = RegExp(/^[a-zA-Z ]{2,30}$/);
+const nameHebRegex = RegExp(/^[\u0590-\u05FF]{2,30}$/);
+
+const emailRegex = RegExp(
+	/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+);
 
 createUser = async (req, res) => {
 	const body = req.body;
 	try {
 		if (
 			!body.firstName ||
-      !body.lastName ||
-      !body.emailAddress ||
-      !body.password
+			!body.lastName ||
+			!body.emailAddress ||
+			!body.password
 		) {
 			return res.status(200).json({
 				success: false,
-				//message: "You must provide all User fields info!",
 				message: "!אנא הכנס/י את כל השדות הנדרשים",
+			});
+		}
+		if (body.firstName.length < 2) {
+			return res.status(200).json({
+				success: false,
+				message: "!אנא הכנס/י שם פרטי באורך 2 תווים לפחות",
+			});
+		} else if (
+			!nameRegex.test(body.firstName) &&
+			!nameHebRegex.test(body.firstName)
+		) {
+			return res.status(200).json({
+				success: false,
+				message:
+					"!אנא הכנס/י שם פרטי שמורכב מאותיות בלבד" +
+					"\n" +
+					"(אנגלית או עברית)",
+			});
+		}
+
+		if (body.lastName.length < 2) {
+			return res.status(200).json({
+				success: false,
+				message: "!אנא הכנס/י שם משפחה באורך 2 תווים לפחות",
+			});
+		} else if (
+			!nameRegex.test(body.lastName) &&
+			!nameHebRegex.test(body.lastName)
+		) {
+			return res.status(200).json({
+				success: false,
+				message:
+					"!אנא הכנס/י שם משפחה שמורכב מאותיות בלבד" +
+					"\n" +
+					"(אנגלית או עברית)",
+			});
+		}
+
+		if (!emailRegex.test(body.emailAddress)) {
+			return res.status(200).json({
+				success: false,
+				message: "!כתובת האימייל אינה חוקית",
 			});
 		}
 
 		if (body.password.length < 6) {
 			return res.status(200).json({
 				success: false,
-				//message: "The password need to be at least 6 character!",
 				message: "!אנא הכנס/י סיסמא באורך 6 לפחות",
 			});
 		}
@@ -52,8 +97,7 @@ createUser = async (req, res) => {
 					return res.status(400).json({ success: false, error: err });
 				}
 
-				user
-					.save()
+				user.save()
 					.then(() => {
 						return res.status(201).json({
 							success: true,
@@ -99,8 +143,7 @@ updateUser = async (req, res) => {
 		user.emailAddress = body.emailAddress;
 		user.password = body.password;
 		user.lastUpdate = body.lastUpdate;
-		user
-			.save()
+		user.save()
 			.then(() => {
 				return res.status(200).json({
 					success: true,
@@ -149,7 +192,9 @@ getUserById = async (req, res) => {
 		}
 
 		if (!user) {
-			return res.status(404).json({ success: false, error: "User not found" });
+			return res
+				.status(404)
+				.json({ success: false, error: "User not found" });
 		}
 		return res.status(200).json({ success: true, data: user });
 	}).catch((err) => console.log(err));
@@ -161,7 +206,9 @@ getUsers = async (req, res) => {
 			return res.status(400).json({ success: false, error: err });
 		}
 		if (!users.length) {
-			return res.status(404).json({ success: false, error: "Users not found" });
+			return res
+				.status(404)
+				.json({ success: false, error: "Users not found" });
 		}
 		return res.status(200).json({ success: true, data: users });
 	}).catch((err) => console.log(err));
@@ -173,8 +220,14 @@ connectUser = async (req, res) => {
 		if (!body.emailAddress || !body.password) {
 			return res.status(200).json({
 				success: false,
-				//message: "You must provide all User fields info to log in!",
 				message: "!אנא הכנס/י את כל השדות הנדרשים",
+			});
+		}
+
+		if (!emailRegex.test(body.emailAddress)) {
+			return res.status(200).json({
+				success: false,
+				message: "!כתובת האימייל אינה חוקית",
 			});
 		}
 
@@ -188,8 +241,8 @@ connectUser = async (req, res) => {
 		User.findOne({ emailAddress: req.body.emailAddress }, (err, user) => {
 			if (
 				err ||
-        !user ||
-        !bcrypt.compareSync(req.body.password, user.password)
+				!user ||
+				!bcrypt.compareSync(req.body.password, user.password)
 			) {
 				return res.status(200).json({
 					success: false,
@@ -197,7 +250,7 @@ connectUser = async (req, res) => {
 					message: "!אימייל או סיסמא לא נכונים",
 				});
 			}
-			const { _id, emailAddress, admin } = user;
+			const { _id, firstName, emailAddress, admin } = user;
 			if (body.checked) {
 				let payload = { id: _id };
 				const token = jwt.sign(payload, process.env.JWT_SECRET, {
@@ -206,7 +259,12 @@ connectUser = async (req, res) => {
 				return res.status(200).json({
 					success: true,
 					isAuthenticated: true,
-					user: { id: _id, admin: admin, emailAddress: emailAddress },
+					user: {
+						id: _id,
+						admin: admin,
+						emailAddress: emailAddress,
+						firstName: firstName,
+					},
 					token,
 					cookie: body.checked ? true : false,
 					message: body.checked
@@ -220,8 +278,7 @@ connectUser = async (req, res) => {
 				res.cookie("access_token", { token });
 			}
 			user.lastLogin = Date.now();
-			user
-				.save()
+			user.save()
 				.then(() => {
 					return res.status(200).json({
 						success: true,
@@ -229,6 +286,7 @@ connectUser = async (req, res) => {
 						id: _id,
 						admin: admin,
 						emailAddress: emailAddress,
+						firstName: firstName,
 						cookie: body.checked ? true : false,
 						message: body.checked
 							? "User exist & updated & can conncet! & want cookie!"

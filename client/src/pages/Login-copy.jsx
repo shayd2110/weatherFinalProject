@@ -42,8 +42,7 @@ function Login() {
 	const [redirect, setRedirect] = useState();
 
 	const handleIncludeUser = async (e) => {
-		e.preventDefault();
-
+		e.preventdefault();
 		const payload = { emailAddress, password, checked: isChecked };
 		console.log("payload", payload);
 		await api.connectUser(payload).then((res) => {
@@ -62,11 +61,6 @@ function Login() {
 		});
 	};
 
-	const clearError = (e) => {
-		e.preventDefault();
-		setError({ errorFound: false, message: "" });
-	};
-
 	console.log("redirect", redirect);
 	console.log("error", error);
 	if (redirect) {
@@ -74,14 +68,14 @@ function Login() {
 	}
 	return (
 		<Wrapper>
-			<h3>התחברות</h3>
+			<h3>�������</h3>
 			{error.errorFound ? (
-				<div onClick={(e) => clearError(e)}>
+				<div onClick={setError({ errorFound: false, message: "" })}>
 					<ErrorNotice message={error.message} />
 				</div>
 			) : null}
 
-			<Label>:כתובת אימייל</Label>
+			<Label>:����� ������</Label>
 			<InputText
 				type="email"
 				value={emailAddress}
@@ -89,11 +83,11 @@ function Login() {
 					setEmailAddress(e.target.value);
 				}}
 				className="form-control"
-				placeholder="הכנס אימייל"
+				placeholder="���� ������"
 				style={{ textAlign: "right" }}
 			/>
 
-			<Label>:סיסמא </Label>
+			<Label>:����� </Label>
 			<InputText
 				type="password"
 				value={password}
@@ -101,7 +95,7 @@ function Login() {
 					setPassword(e.target.value);
 				}}
 				className="form-control"
-				placeholder="הכנס סיסמא"
+				placeholder="���� �����"
 				style={{ textAlign: "right" }}
 			/>
 
@@ -120,13 +114,13 @@ function Login() {
 						className="custom-control-label"
 						htmlFor="rememberMe"
 					>
-						זכור אותי
+						���� ����
 					</Label>
 				</div>
 			</div>
 
 			<>
-				<Button onClick={(e) => handleIncludeUser(e)}>!התחבר</Button>
+				<Button onClick={handleIncludeUser}>!�����</Button>
 				{/* <Link to={"/test"}>LALA </Link> */}
 			</>
 		</Wrapper>

@@ -1,57 +1,55 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { BrowserRouter, Router, Route, Switch, Link } from "react-router-dom";
+import Nav from "react-bootstrap/Nav";
+import { Signup, Login } from "../pages";
 import styled from "styled-components";
 
 const Collapse = styled.div.attrs({
-  className: "collpase navbar-collapse",
+	className: "collpase navbar-collapse",
 })``;
 
 const List = styled.div.attrs({
-  className: "navbar-nav mr-auto",
+	className: "navbar-nav mr-auto",
 })``;
 
 const Item = styled.div.attrs({
-  className: "collpase navbar-collapse",
+	className: "collpase navbar-collapse",
 })``;
 
 class Links extends Component {
-  render() {
-    return (
-      <React.Fragment>
-        <Link
-          className="navbar-brand text-white js-scroll-trigger"
-          href="#page-top"
-          to={"/sign-in"}
-        >
-          <a> מזג-אוויר ישראל </a>
-        </Link>
-        <Collapse>
-          <List>
-            <Item>
-              <Link className="nav-link" to={"/sign-in"}>
-                <a
-                  class="py-3 px-0 px-lg-3 rounded js-scroll-trigger text-white"
-                  href="#portfolio"
-                >
-                  התחברות
-                </a>
-              </Link>
-            </Item>
-            <Item>
-              <Link className="nav-link text-white" to={"/sign-up"}>
-                <a
-                  class="py-3 px-0 px-lg-3 rounded js-scroll-trigger text-white"
-                  href="#portfolio"
-                >
-                  הרשמה
-                </a>
-              </Link>
-            </Item>
-          </List>
-        </Collapse>
-      </React.Fragment>
-    );
-  }
+	render() {
+		return (
+			<ul className="navbar-nav ml-auto">
+				<Nav.Item as="li">
+					<Nav.Link>
+						<Link
+							to={"/sign-in"}
+							style={{
+								color: "inherit",
+								textDecoration: "inherit",
+							}}
+						>
+							התחברות
+						</Link>
+					</Nav.Link>
+				</Nav.Item>
+				<Nav.Item as="li">
+					<Nav.Link>
+						<Link
+							to={"/sign-up"}
+							style={{
+								color: "inherit",
+								textDecoration: "inherit",
+							}}
+						>
+							הרשמה
+						</Link>
+					</Nav.Link>
+				</Nav.Item>
+			</ul>
+		);
+	}
 }
 
 export default Links;

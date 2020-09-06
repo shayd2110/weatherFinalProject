@@ -1,67 +1,65 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { BrowserRouter, Router, Route, Switch, Link } from "react-router-dom";
+import { Map } from "../pages";
+import Nav from "react-bootstrap/Nav";
 import UserContext from "../context/user-context";
+import Scroll from "react-scroll";
 import styled from "styled-components";
 import api from "../api";
 
 const Collapse = styled.div.attrs({
-  className: "collpase navbar-collapse",
+	className: "collpase navbar-collapse",
 })``;
 
 const List = styled.div.attrs({
-  className: "navbar-nav mr-auto",
+	className: "navbar-nav mr-auto",
 })``;
 
 const Item = styled.div.attrs({
-  className: "collpase navbar-collapse",
+	className: "collpase navbar-collapse",
 })``;
 
 export default function Links() {
-  const { userData, setUserData } = useContext(UserContext);
+	const { userData, setUserData } = useContext(UserContext);
+	const ScrollLink = Scroll.ScrollLink;
+	console.log("userData", userData);
+	const logout = () => {
+		setUserData({
+			loggedIn: false,
+			token: undefined,
+			user: undefined,
+		});
+		localStorage.setItem("auth-token", "");
+	};
 
-  console.log("userData", userData);
-  const logout = () => {
-    setUserData({
-      loggedIn: false,
-      token: undefined,
-      user: undefined,
-    });
-    localStorage.setItem("auth-token", "");
-  };
-
-  return (
-    <>
-      <Link
-        className="navbar-brand text-white js-scroll-trigger"
-        href="#page-top"
-        to={"/"}
-      >
-        <a> מזג-אוויר ישראל </a>
-      </Link>
-      <Collapse>
-        <List>
-          <Item>
-            <Link className="nav-link" to={"/settings"}>
-              <a
-                class="py-3 px-0 px-lg-3 rounded js-scroll-trigger text-white"
-                href="#portfolio"
-              >
-                הגדרות
-              </a>
-            </Link>
-          </Item>
-          <Item>
-            <Link className="nav-link text-white">
-              <a
-                class="py-3 px-0 px-lg-3 rounded js-scroll-trigger text-white"
-                onClick={logout}
-              >
-                התנתק/י
-              </a>
-            </Link>
-          </Item>
-        </List>
-      </Collapse>
-    </>
-  );
+	return (
+		<ul className="navbar-nav ml-auto">
+			<Nav.Item as="li">
+				<Nav.Link>ערים נבחרות</Nav.Link>
+			</Nav.Item>
+			<Nav.Item as="li">
+				<Nav.Link>מפת ערי ישראל</Nav.Link>
+			</Nav.Item>
+			<Nav.Item as="li">
+				<Nav.Link>אודות</Nav.Link>
+			</Nav.Item>
+			<Nav.Item as="li">
+				<Nav.Link>הגדרות</Nav.Link>
+			</Nav.Item>
+			<Nav.Item as="li">
+				<Nav.Link onClick={logout}>
+					<Link
+						to={"/sign-in"}
+						style={{ color: "inherit", textDecoration: "inherit" }}
+					>
+						התנתק/י
+					</Link>
+				</Nav.Link>
+			</Nav.Item>
+			<Nav.Item as="li">
+				<Nav.Link disabled>שלום {userData.user.firstName}</Nav.Link>
+			</Nav.Item>
+		</ul>
+	);
 }

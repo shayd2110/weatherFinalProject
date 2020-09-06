@@ -3,8 +3,7 @@
 import React, { Component, useState, useEffect } from "react";
 
 import { BrowserRouter, Router, Route, Switch, Link } from "react-router-dom";
-
-import { NavBar } from "../components";
+import { Header, Copyright } from "../components";
 import { UsersList, Signup, Login, UsersUpdate, Home } from "../pages";
 import UserContext from "../context/user-context";
 import api from "../api";
@@ -39,7 +38,6 @@ function App() {
 			}
 			const payload = { token };
 			api.tokenIsValid(payload).then((res) => {
-				console.log("lala", res.data.success);
 				if (res.data.success) {
 					api.getUserByIdAfterAuth(payload).then((res) => {
 						setUserData({
@@ -63,15 +61,18 @@ function App() {
 	return (
 		<BrowserRouter>
 			<UserContext.Provider value={{ userData, setUserData }}>
+				<Header />
+				{console.log("loggedIn: ", userData.loggedIn)}
 				{userData.loggedIn ? (
-					<div>
+					<>
 						{/* <NavBar /> */}
-						<Route path="/Home" exact component={Home} />
+						<Switch>
+							<Route path="/home" exact component={Home} />
+						</Switch>
 						{/* <Link to={"./Home"}> </Link> */}
-					</div>
+					</>
 				) : (
 					<>
-						<NavBar />
 						<AuthWrapper>
 							<AuthInner>
 								<Switch>
@@ -100,12 +101,8 @@ function App() {
 								exact
 								component={UsersList}
 							/>
-							<Route
-								path="/users/update/:id"
-								exact
-								component={UsersUpdate}
-							/>
 						</Switch>
+						<Copyright />
 					</>
 				)}
 			</UserContext.Provider>

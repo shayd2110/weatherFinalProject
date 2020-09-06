@@ -9,12 +9,14 @@ import Signup from "./Signup";
 import LinkToLogin from "./LinkToLogin";
 import ErrorNotice from "./ErrorNotice";
 import Wellcom from "./Wellcom/Wellcom";
-// import About from "./About/About";
+import Exit from "./Exit";
 import PortfolioMap from "./PortfolioMap";
 import PortfolioGrid from "./PortfolioGrid";
 import PortfolioItem from "./PortfolioItem";
 import PortfolioItemDetails from "./PortfolioItemDetails";
+import Copyright from "./Copyright";
 import Footer from "./Footer";
+import Test from "./test";
 
 export {
 	Links,
@@ -28,10 +30,12 @@ export {
 	LinkToLogin,
 	ErrorNotice,
 	Wellcom,
-	// About,
+	Exit,
 	PortfolioMap,
 	PortfolioGrid,
 	PortfolioItem,
 	PortfolioItemDetails,
+	Copyright,
 	Footer,
+	Test,
 };
