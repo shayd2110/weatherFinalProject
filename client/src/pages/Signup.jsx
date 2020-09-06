@@ -23,7 +23,7 @@ const InputText = styled.input.attrs({
 `;
 
 const Button = styled.button.attrs({
-	className: `btn btn-primary btn-block btn-flat`,
+	className: "btn btn-primary btn-block btn-flat",
 })`
 	margin: 15px 15px 15px 5px;
 `;

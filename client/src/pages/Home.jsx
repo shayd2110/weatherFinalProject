@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { Component } from "react";
 import ScrollableAnchor from "react-scrollable-anchor";
 import { Wellcom, PortfolioGrid, Footer } from "../components";

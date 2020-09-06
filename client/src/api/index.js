@@ -3,7 +3,6 @@ import axios from "axios";
 const api = axios.create({
 	baseURL: "http://localhost:3000/api",
 });
-// eslint-disable-next-line no-unused-vars
 const api2 = axios.create({
 	baseURL: "http://localhost:3000",
 });

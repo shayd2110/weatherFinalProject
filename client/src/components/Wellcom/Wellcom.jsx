@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from "react";
 import { Element } from "react-scroll";
 import { FaStarOfDavid, FaStar } from "react-icons/fa";

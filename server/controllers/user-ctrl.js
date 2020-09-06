@@ -1,6 +1,3 @@
-/* eslint-disable no-empty */
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
 const User = require("../models/user-model");
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -278,27 +275,6 @@ connectUser = async (req, res) => {
 				res.cookie("access_token", { token });
 			}
 			user.lastLogin = Date.now();
-			user.save()
-				.then(() => {
-					return res.status(200).json({
-						success: true,
-						isAuthenticated: true,
-						id: _id,
-						admin: admin,
-						emailAddress: emailAddress,
-						firstName: firstName,
-						cookie: body.checked ? true : false,
-						message: body.checked
-							? "User exist & updated & can conncet! & want cookie!"
-							: "User exist & updated & can conncet! & no no cookie",
-					});
-				})
-				.catch((error) => {
-					return res.status(200).json({
-						success: false,
-						message: "User not (exist & updated & can conncet)!",
-					});
-				});
 		});
 	} catch (err) {}
 };

@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-no-duplicate-props */
-/* eslint-disable no-unused-vars */
 import React, { Component, useState, useEffect } from "react";
 
 import { BrowserRouter, Router, Route, Switch, Link } from "react-router-dom";

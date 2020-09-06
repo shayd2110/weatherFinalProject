@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const mongoose = require("mongoose");
 require("dotenv").config();
 

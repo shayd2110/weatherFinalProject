@@ -11,6 +11,7 @@ module.exports = {
 		ecmaVersion: 2020,
 		sourceType: "module",
 	},
+	parser: "babel-eslint",
 	plugins: ["react"],
 	rules: {
 		indent: ["error", "tab"],
@@ -19,5 +20,11 @@ module.exports = {
 		semi: ["error", "always"],
 		"no-undef": "off",
 		"no-unused-vars": "off",
+		"react/jsx-no-duplicate-props": "off",
+		"react/prop-types": "off",
+		"react/no-unescaped-entities": "off",
+		"react/no-deprecated": "off",
+		"react/no-direct-mutation-state": "off",
+		"no-empty": "off",
 	},
 };

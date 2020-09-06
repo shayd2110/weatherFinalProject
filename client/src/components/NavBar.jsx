@@ -6,13 +6,13 @@ import styled from "styled-components";
 import { Links, LinksLoggedIn, Logo } from "./";
 
 const Container = styled.div.attrs({
-  className: "container",
+	className: "container",
 })``;
 
 const Nav = styled.nav.attrs({
-  className: "navbar navbar-expand-lg navbar-light text-uppercase fixed-top ",
+	className: "navbar navbar-expand-lg navbar-light text-uppercase fixed-top ",
 })`
-  margin-bottom: 20 px;
+	margin-bottom: 20 px;
 `;
 
 // const funcComp2 = () => {
@@ -30,15 +30,15 @@ const Nav = styled.nav.attrs({
 // };
 
 function NavBar() {
-  const context = useContext(UserContext).userData;
-  return (
-    <Container>
-      <Nav>
-        <Logo />
-        {context.loggedIn ? <LinksLoggedIn /> : <Links />}
-      </Nav>
-    </Container>
-  );
+	const context = useContext(UserContext).userData;
+	return (
+		<Container>
+			<Nav>
+				<Logo />
+				{context.loggedIn ? <LinksLoggedIn /> : <Links />}
+			</Nav>
+		</Container>
+	);
 }
 
 export default NavBar;

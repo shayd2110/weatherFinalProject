@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import React, { Component } from "react";
 import { Copyright } from "./";
 import { FaFacebookF, FaPhoneAlt } from "react-icons/fa";

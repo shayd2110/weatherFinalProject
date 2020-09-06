@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React, { Component } from "react";
 import api from "../api/index";
 import * as Yup from "yup";
@@ -97,7 +98,7 @@ export default class Signup extends Component {
 		const payload = { firstName, lastName, emailAddress, password };
 
 		await api.insertUser(payload).then((res) => {
-			window.alert(`User inserted successfully`);
+			window.alert("User inserted successfully");
 			this.setState({
 				firstName: "",
 				lastName: "",

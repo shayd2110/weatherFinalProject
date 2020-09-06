@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { Component } from "react";
 import { BrowserRouter, Router, Route, Switch, Link } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";

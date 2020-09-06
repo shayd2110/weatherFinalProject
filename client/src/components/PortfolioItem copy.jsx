@@ -1,6 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/no-direct-mutation-state */
-/* eslint-disable no-unused-vars */
 import React, { Component } from "react";
 import PortfolioItemDetails from "./PortfolioItemDetails";
 import Popup from "reactjs-popup";

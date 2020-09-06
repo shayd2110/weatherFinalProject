@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const City = require("../models/city-model");
 
 createCity = (req, res) => {

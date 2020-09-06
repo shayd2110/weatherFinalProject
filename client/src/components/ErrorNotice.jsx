@@ -1,5 +1,3 @@
-/* eslint-disable react/no-deprecated */
-/* eslint-disable react/prop-types */
 import React, { Component } from "react";
 import styled from "styled-components";
 import { CencleLogo } from "./";

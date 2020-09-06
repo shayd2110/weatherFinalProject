@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { Component } from "react";
 import { Modal, ModalManager, Effect } from "react-dynamic-modal";
 import { GoX } from "react-icons/go";

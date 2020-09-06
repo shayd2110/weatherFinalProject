@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
 const passport = require("passport");
 const localStrategy = require("passport-local").Strategy;
 const jwtStrategy = require("passport-jwt").Strategy;
@@ -71,7 +69,7 @@ passport.use(
 // );
 
 let opts = {};
-(opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken()), 			// eslint-disable-next-line indent
+(opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken()), // eslint-disable-next-line indent
 	(opts.secretOrKey = "LalaDadaCoder");
 passport.use(
 	new jwtStrategy(opts, (jwt_payload, done) => {

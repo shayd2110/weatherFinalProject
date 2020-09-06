@@ -1,6 +1,3 @@
-/* eslint-disable no-empty */
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
 const User = require("../models/user-model");
 const express = require("express");
 const bodyParser = require("body-parser");
