@@ -28,3 +28,4 @@ node_modules
 .no-delete
 .vscode
 client-copy
+build

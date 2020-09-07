@@ -27,7 +27,13 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 // });
 
 // set up routes.
+app.use(express.static(path.join(__dirname, "../client", "build")));
+app.use(express.static("../client/public"));
+
 app.use("/api", userRouter);
 app.use("/api", cityRouter);
+app.use((req, res, next) => {
+	res.sendFile(path.join(__dirname, "../client", "build", "index.html"));
+});
 
 app.listen(apiPort, () => console.log(`Server running on port: ${apiPort}`));

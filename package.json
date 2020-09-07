@@ -47,7 +47,7 @@
 	"devDependencies": {},
 	"scripts": {
 		"test": "eslint .",
-		"start": "cd ./client && npm start && nodemon ../server/index & "
+		"start": "cd ./client && npm start  "
 	},
 	"repository": {
 		"type": "git",
