@@ -7,7 +7,7 @@ const api2 = axios.create({
 	baseURL: "http://localhost:3000",
 });
 
-//export const getCookieUser = () => api.get(`/`);
+// user requests.
 export const insertUser = (payload) => api.post("/user", payload);
 export const getAllUsers = () => api.get("/users");
 export const updateUserById = (id, payload) => api.put(`/user/${id}`, payload);
@@ -21,9 +21,16 @@ export const tokenIsValid = (payload) =>
 export const getUserByIdAfterAuth = (payload) =>
 	api.get("/", { headers: { "x-auth-token": payload.token } });
 
+// city requests.
 export const insertCity = (payload) => api.post("/city", payload);
 export const getAllCities = () => api.get("/cities");
 export const deleteCityById = (id) => api.delete(`/city/${id}`);
+export const getCityById = (id) => api.get(`/city/${id}`);
+
+// favorite requests.
+export const getFavoritesByUserId = (userId) => api.get(`/favorite/${userId}`);
+export const updateFavorite = (userId, payload) =>
+	api.put(`/favorite/${userId}`, payload);
 
 const apis = {
 	//getCookieUser,
@@ -38,6 +45,9 @@ const apis = {
 	insertCity,
 	getAllCities,
 	deleteCityById,
+	getCityById,
+	getFavoritesByUserId,
+	updateFavorite,
 };
 
 export default apis;

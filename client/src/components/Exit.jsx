@@ -11,15 +11,15 @@ function Exit() {
 	return (
 		<Modal show={show} onHide={handleClose}>
 			<Modal.Header closeButton>
-				<Modal.Title>��� ������ ������?</Modal.Title>
+				<Modal.Title>האם ברצונך להתנתק?</Modal.Title>
 			</Modal.Header>
-			<Modal.Body>����� ���� ����!</Modal.Body>
+			<Modal.Body>נתראה בפעם הבאה!</Modal.Body>
 			<Modal.Footer>
 				<Button variant="secondary" onClick={handleClose}>
-					�����
+					ביטול
 				</Button>
 				<Button variant="primary" onClick={handleClose}>
-					�����/�
+					התנתק/י
 				</Button>
 			</Modal.Footer>
 		</Modal>

@@ -48,6 +48,21 @@ deleteCity = async (req, res) => {
 	}).catch((err) => console.log(err));
 };
 
+getCityById = async (req, res) => {
+	await City.find({ _id: req.params.id }, (err, city) => {
+		if (err) {
+			return res.status(400).json({ success: false, error: err });
+		}
+
+		if (!city) {
+			return res
+				.status(404)
+				.json({ success: false, error: "City  not found" });
+		}
+		return res.status(200).json({ success: true, data: city });
+	}).catch((err) => console.log(err));
+};
+
 getCities = async (req, res) => {
 	await City.find({}, (err, cities) => {
 		if (err) {
@@ -65,5 +80,6 @@ getCities = async (req, res) => {
 module.exports = {
 	createCity,
 	deleteCity,
+	getCityById,
 	getCities,
 };

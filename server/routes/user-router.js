@@ -24,7 +24,7 @@ router.put("/user/:id", UserCtrl.updateUser);
 router.delete("/user/:id", UserCtrl.deleteUser);
 router.get("/user/:id", UserCtrl.getUserById);
 router.get("/users", UserCtrl.getUsers);
-router.get("/sign-in", UserCtrl.getCookieUser);
+// router.get("/sign-in", UserCtrl.getCookieUser);
 router.post("/sign-in", UserCtrl.connectUser);
 router.delete("/delete", UserAuth.auth, UserCtrl.deleteUser);
 router.post("/tokenIsValid", UserAuth.tokenIsValid);

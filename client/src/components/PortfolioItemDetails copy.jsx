@@ -6,7 +6,6 @@ class PortfolioItemDetails extends Component {
 		this.state = {
 			loading: true,
 			data: [],
-
 			lat: props.lat,
 			lng: props.lng,
 			cityName: props.cityName,

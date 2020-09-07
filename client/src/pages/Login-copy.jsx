@@ -68,14 +68,14 @@ function Login() {
 	}
 	return (
 		<Wrapper>
-			<h3>�������</h3>
+			<h3>התחברות</h3>
 			{error.errorFound ? (
 				<div onClick={setError({ errorFound: false, message: "" })}>
 					<ErrorNotice message={error.message} />
 				</div>
 			) : null}
 
-			<Label>:����� ������</Label>
+			<Label>:כתובת אימייל</Label>
 			<InputText
 				type="email"
 				value={emailAddress}
@@ -83,11 +83,11 @@ function Login() {
 					setEmailAddress(e.target.value);
 				}}
 				className="form-control"
-				placeholder="���� ������"
+				placeholder="הכנס אימייל"
 				style={{ textAlign: "right" }}
 			/>
 
-			<Label>:����� </Label>
+			<Label>:סיסמא </Label>
 			<InputText
 				type="password"
 				value={password}
@@ -95,7 +95,7 @@ function Login() {
 					setPassword(e.target.value);
 				}}
 				className="form-control"
-				placeholder="���� �����"
+				placeholder="הכנס סיסמא"
 				style={{ textAlign: "right" }}
 			/>
 
@@ -114,13 +114,13 @@ function Login() {
 						className="custom-control-label"
 						htmlFor="rememberMe"
 					>
-						���� ����
+						זכור אותי
 					</Label>
 				</div>
 			</div>
 
 			<>
-				<Button onClick={handleIncludeUser}>!�����</Button>
+				<Button onClick={handleIncludeUser}>!התחבר</Button>
 				{/* <Link to={"/test"}>LALA </Link> */}
 			</>
 		</Wrapper>

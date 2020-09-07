@@ -1,4 +1,5 @@
 const User = require("../models/user-model");
+const Favorite = require("../models/userFavoriteCity-model");
 const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -96,6 +97,7 @@ createUser = async (req, res) => {
 
 				user.save()
 					.then(() => {
+						addDefultFavoriteCities(user._id);
 						return res.status(201).json({
 							success: true,
 							id: user._id,
@@ -275,46 +277,78 @@ connectUser = async (req, res) => {
 				res.cookie("access_token", { token });
 			}
 			user.lastLogin = Date.now();
+			user.save()
+				.then(() => {
+					return res.status(200).json({
+						success: true,
+						isAuthenticated: true,
+						id: _id,
+						admin: admin,
+						emailAddress: emailAddress,
+						firstName: firstName,
+						cookie: body.checked ? true : false,
+						message: body.checked
+							? "User exist & updated & can conncet! & want cookie!"
+							: "User exist & updated & can conncet! & no no cookie",
+					});
+				})
+				.catch((error) => {
+					return res.status(200).json({
+						success: false,
+						message: "User not (exist & updated & can conncet)!",
+					});
+				});
 		});
 	} catch (err) {}
 };
 
-getCookieUser = async (req, res) => {
-	const authHeader = req.header.authorization;
-	const token = authHeader && authHeader.split(" ")[1];
-	if (!token) {
-		return res.status(200).json({
-			success: false,
-			message: "no token!!!",
+addDefultFavoriteCities = async (userId) => {
+	const defultFavoriteCitiesIds = {
+		selectedCities: [
+			{
+				id: 1,
+				cityId: "5f55136be1b0593c547b0518",
+			},
+			{
+				id: 2,
+				cityId: "5f5513c2e1b0593c547b0519",
+			},
+			{
+				id: 3,
+				cityId: "5f551323e1b0593c547b0517",
+			},
+			{
+				id: 4,
+				cityId: "5f5513f6e1b0593c547b051a",
+			},
+			{
+				id: 5,
+				cityId: "5f55142de1b0593c547b051b",
+			},
+			{
+				id: 6,
+				cityId: "5f55145ce1b0593c547b051c",
+			},
+		],
+	};
+
+	defultFavoriteCitiesIds.selectedCities.map((list) => {
+		const favorite = new Favorite({
+			userId,
+			cityId: list.cityId,
+			favoriteIndex: list.id,
 		});
-	}
 
-	console.log(token);
-
-	return res.status(200).json({
-		success: false,
-		message: "!!!!!!",
+		favorite.save().catch((error) => {
+			return res.status(400).json({
+				error,
+				message: "Favorite not created!",
+			});
+		});
 	});
-
-	// try {
-	//   jwt.verify(token, SECRET);
-	// } catch (err) {
-	//   return res.status(403).json({
-	//     success: false,
-	//     message: "no verify token!!!",
-	//   });
-	// }
-
-	// res.send({ token });
-	// return res.status(200).json({
-	//   success: true,
-	//   message: "here!",
-	//   cookie: x,
-	// });
 };
 
 module.exports = {
-	getCookieUser,
 	createUser,
 	updateUser,
 	deleteUser,

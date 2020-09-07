@@ -46,7 +46,7 @@
 	},
 	"devDependencies": {},
 	"scripts": {
-		"test": "eslint .",
+		"test1": "cd ./client && eslint . --fix && (cd ../server && eslint . --fix)",
 		"start": "cd ./client && npm start  "
 	},
 	"repository": {

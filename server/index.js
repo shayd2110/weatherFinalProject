@@ -8,6 +8,8 @@ const cookieParser = require("cookie-parser");
 const db = require("./db");
 const userRouter = require("./routes/user-router");
 const cityRouter = require("./routes/city-router");
+const favoriteRouter = require("./routes/favorite-router");
+
 // set up express.
 const app = express();
 app.use(express.json());
@@ -21,17 +23,13 @@ const apiPort = process.env.PORT || 3000;
 // set up mongoes.
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
-// app.get("/", (req, res) => {
-//   console.log("Hello World!");
-//   res.send("Hello World!");
-// });
-
 // set up routes.
 app.use(express.static(path.join(__dirname, "../client", "build")));
 app.use(express.static("../client/public"));
 
 app.use("/api", userRouter);
 app.use("/api", cityRouter);
+app.use("/api", favoriteRouter);
 app.use((req, res, next) => {
 	res.sendFile(path.join(__dirname, "../client", "build", "index.html"));
 });
