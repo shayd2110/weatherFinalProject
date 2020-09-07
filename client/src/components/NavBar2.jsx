@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../style/bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
 
 import Logo from "./Logo";

@@ -1,6 +1,6 @@
 import React, { Component, useContext } from "react";
 import UserContext from "../context/user-context";
-import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../style/bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
 
 import { Links, LinksLoggedIn, Logo } from "./";
