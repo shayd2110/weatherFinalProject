@@ -1,5 +1,6 @@
-/*eslint-disable no-undef */
-import React, { Component } from "react";
+import React, { useContext, useState } from "react";
+import UserContext from "../context/user-context";
+
 import ScrollableAnchor from "react-scrollable-anchor";
 import { Wellcom, PortfolioGrid, Footer } from "../components";
 import api from "../api";

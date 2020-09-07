@@ -32,11 +32,10 @@
 		"react-dynamic-modal": "^1.1.1",
 		"react-icons": "^3.11.0",
 		"react-modal": "^3.11.2"
-		
 	},
 	"scripts": {
 		"start-client": "react-scripts start",
-		"start": "npm run build && (cd ../server && npm start)",
+		"start": "set PORT=3000 && npm run build && (cd ../server && npm start)",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"test:lint": "eslint .",

@@ -18,7 +18,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(cookieParser());
 // server port (herko or loacl)
-const apiPort = process.env.PORT || 5000;
+const apiPort = process.env.PORT || 3000;
 
 // set up mongoes.
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
@@ -30,6 +30,7 @@ app.use(express.static("../client/public"));
 app.use("/api", userRouter);
 app.use("/api", cityRouter);
 app.use("/api", favoriteRouter);
+    
 app.use((req, res, next) => {
 	res.sendFile(path.join(__dirname, "../client", "build", "index.html"));
 });
