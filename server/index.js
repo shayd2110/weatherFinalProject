@@ -18,7 +18,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(cookieParser());
 // server port (herko or loacl)
-const apiPort = process.env.PORT || 3000;
+const apiPort = process.env.PORT || 5000;
 
 // set up mongoes.
 db.on("error", console.error.bind(console, "MongoDB connection error:"));

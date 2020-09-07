@@ -1,3 +1,4 @@
+/*eslint-disable no-undef */
 import React, { Component } from "react";
 import ScrollableAnchor from "react-scrollable-anchor";
 import { Wellcom, PortfolioGrid, Footer } from "../components";
