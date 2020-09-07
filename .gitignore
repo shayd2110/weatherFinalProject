@@ -24,7 +24,7 @@ node_modules
 
 /.history
 .history
-.env
+
 .no-delete
 .vscode
 client-copy
