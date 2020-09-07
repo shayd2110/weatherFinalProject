@@ -1,1 +1,1 @@
-web: cd .\client\src | npm start
+web:  npm start

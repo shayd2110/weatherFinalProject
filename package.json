@@ -4,11 +4,7 @@
 	"description": "\"final project\"",
 	"main": "./server/index.js ",
 	"dependencies": {
-		"eslint": "^6.6.0"
-	},
-	"devDependencies": {},
-	"scripts": {
-		"test": "eslint .",
+		"eslint": "^6.6.0",
 		"bcryptjs": "^2.4.3",
 		"body-parser": "^1.19.0",
 		"cookie-parser": "^1.4.5",
@@ -47,6 +43,11 @@
 		"styled-components": "^5.1.1",
 		"sweetalert": "^2.1.2",
 		"yup": "^0.29.3"
+	},
+	"devDependencies": {},
+	"scripts": {
+		"test": "eslint .",
+		"start": "cd ./client && npm start && nodemon ../server/index & "
 	},
 	"repository": {
 		"type": "git",
