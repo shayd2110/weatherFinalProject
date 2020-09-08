@@ -5,7 +5,7 @@ require("dotenv").config();
 const path = require("path");
 const cookieParser = require("cookie-parser");
 
-const db = require("./DB/index.js");
+const db = require("./db");
 const userRouter = require("./routes/user-router");
 const cityRouter = require("./routes/city-router");
 const favoriteRouter = require("./routes/favorite-router");

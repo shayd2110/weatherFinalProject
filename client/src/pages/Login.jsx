@@ -69,10 +69,12 @@ function Login() {
 		setError({ errorFound: false, message: "" });
 	};
 
+	const pro = process.env;
 	console.log("redirect", redirect);
 	console.log("error", error);
 	console.log("baseURL is: ", api.baseURL4Real);
 	console.log("port is: ", api.port);
+	console.log("NODE_ENV is: ", process.env.NODE_ENV);
 
 	if (redirect) {
 		return <Redirect to={redirect} />;

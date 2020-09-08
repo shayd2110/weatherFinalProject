@@ -50,7 +50,7 @@
 	"devDependencies": {},
 	"scripts": {
 		"test1": "cd ./client && eslint . --fix && (cd ../server && eslint . --fix)",
-		"start": "cd ./server && npm start  ",
+		"start": "cd ./client && npm start  ",
 		"start-local": "cd ./client && npm run build &&npm start",
 		"postinstall": "npm-recursive-install --skip-root && cd ./client  && (npm run build)",
 		"build": "cd ./client && npm run build"
