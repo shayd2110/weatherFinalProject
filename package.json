@@ -51,7 +51,7 @@
 	"scripts": {
 		"test1": "cd ./client && eslint . --fix && (cd ../server && eslint . --fix)",
 		"start": "cd ./server && npm start  ",
-		"postinstall": "npm-recursive-install && cd ./client  && (npm run build)"
+		"postinstall": "npm-recursive-install --skip-root && cd ./client  && (npm run build)"
 	},
 	"repository": {
 		"type": "git",
