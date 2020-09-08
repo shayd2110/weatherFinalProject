@@ -36,7 +36,7 @@
 	"scripts": {
 		"start-client": "SET NODE_ENV=development && react-scripts start",
 		"start-dev": "SET NODE_ENV=development && cd ../server && npm start",
-		"start": "SET NODE_ENV=production && cd ../server && npm start",
+		"start": "cd ../server && npm start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"test:lint": "eslint .",
