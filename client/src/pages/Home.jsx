@@ -20,6 +20,7 @@ function Home() {
 	});
 
 	console.log("f", userFavoritesCities);
+	console.log("port", api.port);
 
 	// const [selectedCities, setSelectedCities] = useState(
 	//   api.getFavoritesByUserId(userData.user.id).data

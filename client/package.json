@@ -35,7 +35,8 @@
 	},
 	"scripts": {
 		"start-client": "react-scripts start",
-		"start": "npm run build && (cd ../server && npm start)",
+		"postinstall": "npm run build",
+		"start": " cd ../server && npm start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"test:lint": "eslint .",
