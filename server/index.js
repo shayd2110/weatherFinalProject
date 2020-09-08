@@ -35,6 +35,6 @@ app.use((req, res, next) => {
 	res.sendFile(path.join(__dirname, "../client", "build", "index.html"));
 });
 
-app.listen(apiPort || process.env.PORT, () =>
+app.listen(process.env.PORT, () =>
 	console.log(`Server running on port: ${apiPort}`)
 );
