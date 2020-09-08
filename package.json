@@ -49,7 +49,8 @@
 	"devDependencies": {},
 	"scripts": {
 		"test1": "cd ./client && eslint . --fix && (cd ../server && eslint . --fix)",
-		"start": "cd ./client && npm start  "
+		"start": "cd ./server && npm start  ",
+		"postinstall": "cd ./client && npm install && (npm run build) && (cd ../server && npm install)"
 	},
 	"repository": {
 		"type": "git",

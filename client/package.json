@@ -35,7 +35,6 @@
 	},
 	"scripts": {
 		"start-client": "react-scripts start",
-		"postinstall": "npm run build",
 		"start": " cd ../server && npm start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
