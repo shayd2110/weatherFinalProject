@@ -2,11 +2,15 @@ import axios from "axios";
 
 export const port = process.env.PORT || 3000;
 
-const api = axios.create({
-	baseURL: `http://localhost:${port}/api`,
+export const baseURL4Real =
+	process.env.PORT == undefined
+		? "http://localhost:3000/api"
+		: "https://weather-final-project.herokuapp.com/api";
+export const api = axios.create({
+	baseURL: baseURL4Real,
 });
 const api2 = axios.create({
-	baseURL: `http://localhost:${port}`,
+	baseURL: "http://localhost:3000",
 });
 
 // user requests.
@@ -51,6 +55,7 @@ const apis = {
 	getFavoritesByUserId,
 	updateFavorite,
 	port,
+	baseURL4Real,
 };
 
 export default apis;

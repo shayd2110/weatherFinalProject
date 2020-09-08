@@ -34,5 +34,5 @@ app.use("/api", favoriteRouter);
 app.use((req, res, next) => {
 	res.sendFile(path.join(__dirname, "../client", "build", "index.html"));
 });
-console.log("port is: ", apiPort);
+
 app.listen(apiPort, () => console.log(`Server running on port: ${apiPort}`));

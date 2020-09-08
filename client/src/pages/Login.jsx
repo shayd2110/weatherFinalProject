@@ -71,6 +71,8 @@ function Login() {
 
 	console.log("redirect", redirect);
 	console.log("error", error);
+	console.log("baseURL is: ", api.baseURL4Real);
+	console.log("port is: ", api.port);
 
 	if (redirect) {
 		return <Redirect to={redirect} />;
