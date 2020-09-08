@@ -46,6 +46,8 @@ function Login() {
 
 		const payload = { emailAddress, password, checked: isChecked };
 		console.log("payload", payload);
+		const port = process.env.PORT || 3000;
+		console.log("port is: ",port);
 		await api.connectUser(payload).then((res) => {
 			if (res.data.success) {
 				console.log("ok", res.data);
@@ -69,6 +71,7 @@ function Login() {
 
 	console.log("redirect", redirect);
 	console.log("error", error);
+	consloe.log();
 	if (redirect) {
 		return <Redirect to={redirect} />;
 	}
