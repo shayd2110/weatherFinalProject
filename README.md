@@ -3,7 +3,7 @@ Final Project in course "An advanced Topics in software development" in Tel-Hai 
 
 Our heroku website: https://weather-final-project.herokuapp.com/home
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/shayd2110/weatherFinalProject/)
 
 Our Team:
 David Biton
