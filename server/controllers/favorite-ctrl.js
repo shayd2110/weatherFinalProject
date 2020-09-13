@@ -81,7 +81,7 @@ getFavoriteByUserId = async (req, res) => {
 		if (!favorite) {
 			return res
 				.status(404)
-        .json({ success: false, error: `User favorite not found` });
+				.json({ success: false, error: "User favorite not found" });
 		}
 		// console.log("data: favorite", favorite);
 		return res.status(200).json({ success: true, data: favorite });
