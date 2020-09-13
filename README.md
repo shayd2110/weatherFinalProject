@@ -1,4 +1,8 @@
 ![test code style](https://github.com/shayd2110/weatherFinalProject/workflows/test%20code%20style/badge.svg)
+
+[![Build Status](https://travis-ci.com/username/projectname.svg?branch=master)](https://travis-ci.com/username/projectname)
+
+
 Final Project in course "An advanced Topics in software development" in Tel-Hai Collage
 
 Our heroku website: 
@@ -8,8 +12,13 @@ Our heroku website:
 [![Heroku](http://heroku-badge.herokuapp.com/?app=weather-final-project)]
 
 Our Team:
+
 David Biton
+
 Kobi Horshid
+
 Or Itzhari
+
 Shalev Marciano
+
 Shay Doron
