@@ -1,19 +1,16 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import { Modal, ModalManager, Effect } from "react-dynamic-modal";
 import { GoX } from "react-icons/go";
 import PortfolioItemDetails from "./PortfolioItemDetails";
-// import Popup from "reactjs-popup";
-// import Modal from "react-modal";
 import "../app/index.css";
 
 const defaultStyles = {
 	overlay: {
 		position: "fixed",
-		width: "80%",
-		height: "auto",
-		top: "50%",
-		left: "50%",
+		top: 0,
+		left: 0,
+		right: 0,
+		bottom: 0,
 		zIndex: 99999999,
 		overflow: "hidden",
 		perspective: 1300,
@@ -22,7 +19,7 @@ const defaultStyles = {
 
 	content: {
 		position: "relative",
-		margin: "15% auto",
+		margin: "3% auto",
 		width: "60%",
 		border: "1px solid rgba(0, 0, 0, .2)",
 		background: "#fff",
@@ -41,7 +38,7 @@ class MyModal extends Component {
 			<Modal
 				onRequestClose={onRequestClose}
 				effect={Effect.ScaleUp}
-				styles={defaultStyles}
+				style={defaultStyles}
 			>
 				<div className="modal-header">
 					<button
@@ -63,18 +60,19 @@ class MyModal extends Component {
 						lat={data.lat}
 						lng={data.lng}
 						cityName={data.cityName}
+						geoloction={false}
 					/>
 				</div>
-				{/* <div className="modal-footer"> */}
-				<button
-					type="button"
-					className="btn btn-primary"
-					onClick={ModalManager.close}
-				>
-					<i className="fas fa-times fa-fw"></i>
-					סגור
-				</button>
-				{/* </div> */}
+				<div className="modal-footer">
+					<button
+						type="button"
+						className="btn btn-primary"
+						onClick={ModalManager.close}
+					>
+						<i className="fas fa-times fa-fw"></i>
+						סגור
+					</button>
+				</div>
 			</Modal>
 		);
 	}
@@ -90,8 +88,6 @@ class PortfolioItem extends Component {
 	}
 
 	openModal() {
-		// const text = this.refs.input.value;
-		// ModalManager.open(<MyModal text={text} onRequestClose={() => true} />);
 		const payload = {
 			modalName: this.props.modalName,
 			imgUrl: this.props.imgUrl,

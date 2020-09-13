@@ -5,7 +5,7 @@ require("dotenv").config();
 const path = require("path");
 const cookieParser = require("cookie-parser");
 
-const db = require("./DB/index.js");
+const db = require("./db");
 const userRouter = require("./routes/user-router");
 const cityRouter = require("./routes/city-router");
 const favoriteRouter = require("./routes/favorite-router");
@@ -22,17 +22,11 @@ const apiPort = process.env.PORT || 3000;
 
 // set up mongoes.
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
+console.log("I'm index1");
 
 // set up routes.
-app.use(express.static(path.join(__dirname, "../client", "build")));
-app.use(express.static("../client/public"));
-
 app.use("/api", userRouter);
 app.use("/api", cityRouter);
 app.use("/api", favoriteRouter);
-console.log("I'm index");
-app.use((req, res, next) => {
-	res.sendFile(path.join(__dirname, "../client", "build", "index.html"));
-});
 
 app.listen(apiPort, () => console.log(`Server running on port: ${apiPort}`));

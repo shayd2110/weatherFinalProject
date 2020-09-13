@@ -1,11 +1,23 @@
 import React, { Component, useState, useEffect } from "react";
-
-import { BrowserRouter, Router, Route, Switch, Link } from "react-router-dom";
-import { Header, Copyright } from "../components";
+import {
+	BrowserRouter,
+	Router,
+	Route,
+	Switch,
+	Redirect,
+} from "react-router-dom";
+import {
+	Header,
+	Wellcom,
+	Footer,
+	Copyright,
+	PortfolioMap,
+	Waiting,
+} from "../components";
 import { UsersList, Signup, Login, UsersUpdate, Home } from "../pages";
 import UserContext from "../context/user-context";
+import UserFavoriteContext from "../context/userFavorite-context";
 import api from "../api";
-
 import styled from "styled-components";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -26,10 +38,13 @@ function App() {
 		user: undefined,
 	});
 
+	const [userFavoriteData, setUserFavoriteData] = useState({
+		render: false,
+	});
+
 	useEffect(() => {
 		const checkLoggedIn = async () => {
 			let token = localStorage.getItem("auth-token");
-			console.log("token:", token);
 			if (token === null) {
 				localStorage.setItem("auth-token", "");
 				token = "";
@@ -59,50 +74,64 @@ function App() {
 	return (
 		<BrowserRouter>
 			<UserContext.Provider value={{ userData, setUserData }}>
-				<Header />
-				{console.log("loggedIn: ", userData.loggedIn)}
-				{userData.loggedIn ? (
-					<>
-						{/* <NavBar /> */}
-						<Switch>
-							<Route path="/home" exact component={Home} />
-						</Switch>
-						{/* <Link to={"./Home"}> </Link> */}
-					</>
-				) : (
-					<>
-						<AuthWrapper>
-							<AuthInner>
-								<Switch>
-									<Route
-										exact
-										path="/"
-										exact
-										component={Login}
-									/>
-									<Route
-										path="/sign-in"
-										exact
-										component={Login}
-									/>
-									<Route
-										path="/sign-up"
-										exact
-										component={Signup}
-									/>
-								</Switch>
-							</AuthInner>
-						</AuthWrapper>
-						<Switch>
-							<Route
-								path="/users/list"
-								exact
-								component={UsersList}
-							/>
-						</Switch>
-						<Copyright />
-					</>
-				)}
+				<UserFavoriteContext.Provider
+					value={{ userFavoriteData, setUserFavoriteData }}
+				>
+					<Header />
+					{userData.loggedIn ? (
+						<>
+							<Wellcom />
+							<Switch>
+								<Route path="/home" exact component={Home} />
+								<Route
+									path="/home-map"
+									exact
+									component={PortfolioMap}
+								/>
+								<Route
+									path="/home-settings"
+									exact
+									component={Waiting}
+								/>
+							</Switch>
+							<Footer />
+						</>
+					) : (
+						<>
+							<Redirect to={"/sign-in"} />
+							<AuthWrapper>
+								<AuthInner>
+									<Switch>
+										<Route
+											exact
+											path="/"
+											exact
+											component={Login}
+										/>
+										<Route
+											path="/sign-in"
+											exact
+											component={Login}
+										/>
+										<Route
+											path="/sign-up"
+											exact
+											component={Signup}
+										/>
+									</Switch>
+								</AuthInner>
+							</AuthWrapper>
+							<Switch>
+								<Route
+									path="/users/list"
+									exact
+									component={UsersList}
+								/>
+							</Switch>
+							<Copyright />
+						</>
+					)}
+				</UserFavoriteContext.Provider>
 			</UserContext.Provider>
 		</BrowserRouter>
 	);

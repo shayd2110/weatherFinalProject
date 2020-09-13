@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Element } from "react-scroll";
 import { FaStar } from "react-icons/fa";
 import { PortfolioItem } from "./";
 
@@ -10,10 +9,17 @@ class PortfolioGrid extends Component {
 			selectedCities: props.selectedCities,
 		};
 	}
+
+	componentWillReceiveProps(nextProps) {
+		console.log("change", nextProps.selectedCities);
+		this.setState({ selectedCities: nextProps.selectedCities });
+	}
+
 	render() {
+		const { selectedCities } = this.state;
+
 		return (
 			<React.Fragment>
-				{/* <Element id="example-destination" name="example-destination"> */}
 				<section className="page-section portfolio" id="portfolio">
 					<div className="container">
 						{/* -- Portfolio Section Heading -- */}
@@ -47,7 +53,6 @@ class PortfolioGrid extends Component {
 						</div>
 					</div>
 				</section>
-				{/* </Element> */}
 			</React.Fragment>
 		);
 	}

@@ -10,8 +10,8 @@ class Copyright extends Component {
 			<section className="copyright py-4 text-center text-white">
 				<div className="container">
 					<small>
-						מגישים &copy; אור יצהרי - 204265086 ודוד ביטון -
-						301431482
+						מגישים &copy; אור יצהרי, דוד ביטון, שלו מרציאנו, קובי
+						חורשיד, שי דורון
 					</small>
 				</div>
 			</section>

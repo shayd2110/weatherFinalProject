@@ -1,37 +1,18 @@
 import React, { Component } from "react";
-
 import ReactTable from "react-table-6";
 import api from "../api";
-
+import $ from "jquery";
 import styled from "styled-components";
-
 import "react-table-6/react-table.css";
 
 const Wrapper = styled.div`
 	padding: 0 40px 40px 40px;
 `;
 
-const Update = styled.div`
-	color: #ef9b0f;
-	cursor: pointer;
-`;
-
 const Delete = styled.div`
 	color: #ff0000;
 	cursor: pointer;
 `;
-
-class UpdateUser extends Component {
-	updateUser = (event) => {
-		event.preventDefault();
-
-		window.location.href = `/users/update/${this.props.id}`;
-	};
-
-	render() {
-		return <Update onClick={this.updateUser}>Update</Update>;
-	}
-}
 
 class DeleteUser extends Component {
 	deleteUser = (event) => {
@@ -48,6 +29,9 @@ class DeleteUser extends Component {
 	};
 
 	render() {
+		if (this.props.admin) {
+			return <Delete disabled>Delete-Lock</Delete>;
+		}
 		return <Delete onClick={this.deleteUser}>Delete</Delete>;
 	}
 }
@@ -66,7 +50,6 @@ class UsersList extends Component {
 		this.setState({ isLoading: true });
 
 		await api.getAllUsers().then((users) => {
-			console.log("here1!!!", users.data.data);
 			this.setState({
 				usersList: users.data.data,
 				isLoading: false,
@@ -75,13 +58,12 @@ class UsersList extends Component {
 	};
 
 	render() {
-		console.log("here2!!!", this.state.usersList);
+		$("#saveChangeSuccessfully").attr("hidden", true);
 		const { usersList, isLoading } = this.state;
-		console.log("TCL: usersList -> render -> users", usersList);
 
 		const columns = [
 			{
-				Header: "ID",
+				Header: "Id",
 				accessor: "_id",
 				filterable: true,
 			},
@@ -109,6 +91,17 @@ class UsersList extends Component {
 				Header: "Admin",
 				accessor: "admin",
 				filterable: true,
+				Cell: function (props) {
+					return (
+						<div style={{ textAlign: "center" }}>
+							{props.original.admin ? (
+								<span>Yes</span>
+							) : (
+								<span>No</span>
+							)}
+						</div>
+					);
+				},
 			},
 			{
 				Header: "",
@@ -120,18 +113,8 @@ class UsersList extends Component {
 								id={props.original._id}
 								firstName={props.original.firstName}
 								lastName={props.original.lastName}
+								admin={props.original.admin}
 							/>
-						</span>
-					);
-				},
-			},
-			{
-				Header: "",
-				accessor: "",
-				Cell: function (props) {
-					return (
-						<span>
-							<UpdateUser id={props.original._id} />
 						</span>
 					);
 				},

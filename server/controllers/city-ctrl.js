@@ -49,7 +49,7 @@ deleteCity = async (req, res) => {
 };
 
 getCityById = async (req, res) => {
-	await City.find({ _id: req.params.id }, (err, city) => {
+	City.find({ _id: req.params.id }, (err, city) => {
 		if (err) {
 			return res.status(400).json({ success: false, error: err });
 		}

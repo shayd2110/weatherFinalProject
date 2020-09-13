@@ -250,54 +250,26 @@ connectUser = async (req, res) => {
 				});
 			}
 			const { _id, firstName, emailAddress, admin } = user;
-			if (body.checked) {
-				let payload = { id: _id };
-				const token = jwt.sign(payload, process.env.JWT_SECRET, {
-					expiresIn: "1h",
-				});
-				return res.status(200).json({
-					success: true,
-					isAuthenticated: true,
-					user: {
-						id: _id,
-						admin: admin,
-						emailAddress: emailAddress,
-						firstName: firstName,
-					},
-					token,
-					cookie: body.checked ? true : false,
-					message: body.checked
-						? "User exist & updated & can conncet! & want cookie!"
-						: "User exist & updated & can conncet! & no no cookie",
-				});
-				//{ expiresIn: "1h" };
-				//res.send({ token });
-				//res.cookie("access_token", { token }, { httpOnly: true, sameSite: true });
-				// eslint-disable-next-line no-unreachable
-				res.cookie("access_token", { token });
-			}
-			user.lastLogin = Date.now();
-			user.save()
-				.then(() => {
-					return res.status(200).json({
-						success: true,
-						isAuthenticated: true,
-						id: _id,
-						admin: admin,
-						emailAddress: emailAddress,
-						firstName: firstName,
-						cookie: body.checked ? true : false,
-						message: body.checked
-							? "User exist & updated & can conncet! & want cookie!"
-							: "User exist & updated & can conncet! & no no cookie",
-					});
-				})
-				.catch((error) => {
-					return res.status(200).json({
-						success: false,
-						message: "User not (exist & updated & can conncet)!",
-					});
-				});
+
+			let payload = { id: _id };
+			const token = jwt.sign(payload, process.env.JWT_SECRET, {
+				expiresIn: body.checked ? "1d" : "10m",
+			});
+			return res.status(200).json({
+				success: true,
+				isAuthenticated: true,
+				user: {
+					_id: _id,
+					admin: admin,
+					emailAddress: emailAddress,
+					firstName: firstName,
+				},
+				token,
+				cookie: body.checked ? true : false,
+				message: body.checked
+					? "User exist & updated & can conncet! & want cookie!"
+					: "User exist & updated & can conncet! & no no cookie",
+			});
 		});
 	} catch (err) {}
 };

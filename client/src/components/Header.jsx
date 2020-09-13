@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { BrowserRouter, Router, Route, Switch, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Scroll from "react-scroll";
 import UserContext from "../context/user-context";
 import { Links, LinksLoggedIn, Logo } from "./";
@@ -18,6 +18,7 @@ function Header() {
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
 					{userData.loggedIn ? <LinksLoggedIn /> : <Links />}
+					{userData.loggedIn ? <Redirect to={"/home"} /> : null}
 				</Navbar.Collapse>
 			</div>
 		</Navbar>

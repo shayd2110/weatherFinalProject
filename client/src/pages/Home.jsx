@@ -1,41 +1,74 @@
 import React, { useContext, useState } from "react";
 import UserContext from "../context/user-context";
-
-import ScrollableAnchor from "react-scrollable-anchor";
-import { Wellcom, PortfolioGrid, Footer } from "../components";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { PortfolioGrid, PortfolioMap } from "../components";
 import api from "../api";
+import { useEffect } from "react";
 
-function Home() {
+function Home(props) {
 	const { userData, setUserData } = useContext(UserContext);
-	var userFavoritesCities = [];
-	// console.log("userData1", userData);
-	api.getFavoritesByUserId(userData.user._id).then((res) => {
-		res.data.data.map((list) => {
-			console.log("lala", list.cityId);
-			api.getCityById(list.cityId).then((res) => {
-				// console.log("res.data", res.data.data[0]);
-				userFavoritesCities.concat(res.data.data[0]);
+	var [userFavoritesCities, setUserFavoritesCities] = useState([
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+	]);
+
+	useEffect(() => {
+		api.getFavoritesByUserId(userData.user._id).then((firstRes) => {
+			for (let index = 0; index < firstRes.data.data.length; index++) {
+				api.getCityById(firstRes.data.data[index].cityId).then(
+					(res) => {
+						const cityObj = res.data.data[0];
+						userFavoritesCities[index] = {
+							url: cityObj.image,
+							id: index + 1,
+							name: cityObj.name,
+							lat: cityObj.lat,
+							lng: cityObj.lon,
+							value: firstRes.data.data[index].cityId,
+						};
+						setUserFavoritesCities([...userFavoritesCities]);
+					}
+				);
+			}
+			setUserData({
+				loggedIn: userData.loggedIn,
+				token: userData.token,
+				user: {
+					_id: userData.user._id,
+					firstName: userData.user.firstName,
+					lastName: userData.user.lastName,
+					admin: userData.user.admin,
+					favoritesCities: userFavoritesCities,
+				},
 			});
 		});
-	});
-
-	console.log("f", userFavoritesCities);
-	console.log("port", api.port);
-
-	// const [selectedCities, setSelectedCities] = useState(
-	//   api.getFavoritesByUserId(userData.user.id).data
-	// );
+	}, []);
 
 	return (
-		// <ScrollableAnchor id="home">
 		<div>
-			<Wellcom />
-			<PortfolioGrid selectedCities={[]} />
-			{/* <About /> */}
-			{/* <Map /> */}
-			<Footer />
+			<BrowserRouter>
+				<Switch>
+					<Route
+						path="/home-map"
+						exact
+						component={() => <PortfolioMap />}
+					/>
+					<Route
+						path="/home"
+						exact
+						component={() => (
+							<PortfolioGrid
+								selectedCities={userFavoritesCities}
+							/>
+						)}
+					/>
+				</Switch>
+			</BrowserRouter>
 		</div>
-		// </ScrollableAnchor>
 	);
 }
 

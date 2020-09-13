@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PortfolioParseDetails from "./PortfolioParseDetails";
 
 class PortfolioItemDetails extends Component {
 	constructor(props) {
@@ -13,6 +14,7 @@ class PortfolioItemDetails extends Component {
 	}
 
 	async componentDidMount() {
+		console.log("lat", this.props.lng);
 		let _darkskyApiKey = "014dd470e25bffea4a246375af37ba17";
 		let _darkskyUnits = "ca"; // or "si" or "us"
 		let _darkskyLang = "he"; // hebrew
@@ -29,16 +31,20 @@ class PortfolioItemDetails extends Component {
 
 	render() {
 		const { loading, data, lat, lng, cityName } = this.state;
-		console.log("name ", cityName);
 		return (
 			<div className="modal-body text-center">
 				<div className="container">
 					<div className="row justify-content-center">
 						<div className="col-lg-8">
-							{/* !-- Portfolio Modal - Title -- */}
-							<h2 className="portfolio-modal-title text-secondary text-uppercase mb-0">
-								{cityName}
-							</h2>
+							{/* !-- Portfolio Modal  --! */}
+							{loading ? (
+								<h2>...טוען</h2>
+							) : (
+								<PortfolioParseDetails
+									data={data}
+									cityName={cityName}
+								/>
+							)}
 						</div>
 					</div>
 				</div>

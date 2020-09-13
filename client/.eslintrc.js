@@ -26,5 +26,6 @@ module.exports = {
 		"react/no-deprecated": "off",
 		"react/no-direct-mutation-state": "off",
 		"no-empty": "off",
+		"react/no-string-refs": "off",
 	},
 };

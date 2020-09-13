@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { LinkToLogin, ErrorNotice } from "../components";
+import { Modal, ModalManager, Effect } from "react-dynamic-modal";
+import { GoX } from "react-icons/go";
 import api from "../api";
 
 import styled from "styled-components";
@@ -28,6 +29,73 @@ const Button = styled.button.attrs({
 	margin: 15px 15px 15px 5px;
 `;
 
+const defaultStyles = {
+	overlay: {
+		position: "fixed",
+		top: 0,
+		left: 0,
+		right: 0,
+		bottom: 0,
+		zIndex: 99999999,
+		overflow: "hidden",
+		perspective: 1300,
+		backgroundColor: "rgba(0, 0, 0, 0.3)",
+	},
+
+	content: {
+		position: "relative",
+		margin: "3% auto",
+		width: "60%",
+		border: "1px solid rgba(0, 0, 0, .2)",
+		background: "#fff",
+		overflow: "auto",
+		borderRadius: "4px",
+		outline: "none",
+		boxShadow: "0 5px 10px rgba(0, 0, 0, .3)",
+	},
+};
+
+class MyModal extends Component {
+	render() {
+		console.log("here61");
+		const { data, onRequestClose } = this.props;
+		return (
+			<Modal
+				onRequestClose={onRequestClose}
+				effect={Effect.ScaleUp}
+				style={defaultStyles}
+			>
+				<div className="modal-header">
+					<button
+						type="button"
+						className="close"
+						data-dismiss="modal"
+						aria-label="Close"
+						onClick={ModalManager.close}
+					>
+						<span aria-hidden="true">
+							<GoX />
+						</span>
+					</button>
+				</div>
+				<div className="modal-body">
+					<h2>{`שלום ${data.firstName} ${data.lastName} \n תהליך ההרשמה בוצע בהצלחה `}</h2>
+				</div>
+				<div className="modal-footer">
+					<button
+						type="button"
+						className="btn btn-primary"
+						onClick={ModalManager.close}
+					>
+						<i className="fas fa-times fa-fw"></i>
+						אישור
+					</button>
+				</div>
+			</Modal>
+		);
+	}
+}
+
 class Signup extends Component {
 	constructor(props) {
 		super(props);
@@ -41,6 +109,17 @@ class Signup extends Component {
 			message: "",
 		};
 		this.toggle = this.toggle.bind(this);
+	}
+
+	openModal(firstName, lastName) {
+		const payload = {
+			firstName: firstName,
+			lastName: lastName,
+		};
+
+		ModalManager.open(
+			<MyModal data={payload} onRequestClose={() => true} />
+		);
 	}
 
 	toggle() {
@@ -71,13 +150,16 @@ class Signup extends Component {
 		const { firstName, lastName, emailAddress, password } = this.state;
 		const payload = { firstName, lastName, emailAddress, password };
 
+		this.openModal.bind(this);
+
 		await api.insertUser(payload).then((res) => {
 			if (res.data.success) {
-				// window.alert(`User Create successfully`);
 				this.setState({
 					error: false,
 					message: "",
 				});
+				console.log("here157");
+
 				this.setState({
 					firstName: "",
 					lastName: "",
@@ -85,7 +167,6 @@ class Signup extends Component {
 					password: "",
 				});
 			} else {
-				//window.alert(res.data.message);
 				this.setState({
 					error: !res.data.success,
 					message: res.data.message,

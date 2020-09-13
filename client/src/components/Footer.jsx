@@ -19,7 +19,18 @@ class Footer extends Component {
 								<p className="lead mb-0">
 									,קריית-שמונה
 									<br />
-									האצ"ל 20 - <br /> אחד-העם 9 -
+									האצ"ל 20 -
+									<br />
+									אחד-העם 9 -
+									<br />
+									רמב"ם 1 -
+									<br />
+									מנחם בגין 32 -
+								</p>
+								<p className="lead mb-0">
+									,שדה-נחמיה
+									<br />
+									דרך החמניות -
 								</p>
 							</div>
 
@@ -32,13 +43,19 @@ class Footer extends Component {
 									052-4764379 - אור
 									<br />
 									054-7303575 - דוד
+									<br />
+									שלו - 052-6448327
+									<br />
+									קובי - 052-6321313
+									<br />
+									שי - 054-6676278
 								</p>
 							</div>
 
 							{/* !-- Footer Social Icons -- */}
 							<div className="col-lg-3 mb-8 mb-lg-0">
 								<h4 className="text-center mb-4">
-									:מצא אותנו בפסייבוק
+									:מצא אותנו בפייסבוק
 								</h4>
 								<a
 									className="btn btn-outline-light btn-social mx-1"
@@ -52,14 +69,34 @@ class Footer extends Component {
 								>
 									<FaFacebookF />
 								</a>
+								<br />
+								<a
+									className="btn btn-outline-light btn-social mx-1"
+									href="https://www.facebook.com/shalev.marciano"
+								>
+									<FaFacebookF />
+								</a>
+								<a
+									className="btn btn-outline-light btn-social mx-1"
+									href="https://www.facebook.com/kobi.horshid"
+								>
+									<FaFacebookF />
+								</a>
+								<br />
+								<a
+									className="btn btn-outline-light btn-social mx-1"
+									href="https://www.facebook.com/shay.doron"
+								>
+									<FaFacebookF />
+								</a>
 							</div>
 
 							{/* !-- Footer About Text -- */}
 							<div className="col-lg-3">
 								<h4 className="text-center mb-4">:קצת עלינו</h4>
 								<p className="lead mb-0">
-									.סטודנטים למדעי המחשב שנה אחרונה במכללת
-									תלי-חי{" "}
+									.סטודנטים למדעי המחשב, שנה אחרונה במכללת
+									תלי-חי
 								</p>
 							</div>
 						</div>
