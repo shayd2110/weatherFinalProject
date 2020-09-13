@@ -3,7 +3,7 @@ Final Project in course "An advanced Topics in software development" in Tel-Hai 
 
 Our heroku website: https://weather-final-project.herokuapp.com
 
-[![Our Website in Hroku](https://www.herokucdn.com/deploy/button.svg)](app.json validate)
+[![Our Website in Hroku](https://www.herokucdn.com/deploy/button.svg)](https://weather-final-project.herokuapp.com)
 
 [![Heroku](http://heroku-badge.herokuapp.com/?app=weather-final-project)]
 
