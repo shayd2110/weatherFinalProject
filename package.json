@@ -56,7 +56,7 @@
 		"start": "cd ./client && npm start  ",
 		"start-server": "cd ./server && nodemon index1.js",
 		"start-local-client": "cd ./client && npm run build &&npm start",
-		"postinstall": "npm-recursive-install --skip-root && cd ./client  && (npm run build) &&  NODE_ENV=production",
+		"postinstall": "npm-recursive-install --skip-root && npm-recursive-install --skip-root && cd ./client  && (npm run build) &&  NODE_ENV=production",
 		"build": "cd ./client && npm run build"
 	},
 	"repository": {

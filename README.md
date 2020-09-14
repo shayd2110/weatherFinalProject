@@ -9,6 +9,16 @@ Our heroku website:
 
 [![Heroku](http://heroku-badge.herokuapp.com/?app=weather-final-project)]
 
+*********************************************
+TO RUN THIS APP
+1. npm run postinstall 
+2. npm start
+*********************************************
+
+
+
+
+
 Our Team:
 
 David Biton
