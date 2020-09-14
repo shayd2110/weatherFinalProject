@@ -4,8 +4,8 @@ node_js:
 cache: npm
 before_install:
     - npm install recursive-install
-    - npm-recursive-install --skip-root
 install:
+    - npm-recursive-install --skip-root
 script:
     - cd ./client && npm run build
 deploy:
