@@ -1,0 +1,16 @@
+languaage: node_js
+node_js:
+    - node
+cache: npm
+before_install:
+    - npm-recursive-install --skip-root
+install:
+script:
+    - cd ./client && npm run build
+deploy:
+    provider: heroku
+    skip-cleanup: true
+    api_key:
+        secure: nzJDC7Mi1OlbbdQr++UfC4zQM4S/dz1pt4ybRQtDA0qYyrGTa1X0PNKkajvz+oB3/H1gczCrnptibWnbUnmZUTorgouOLO9gxgeXlNZbppH2RDJzkQZJel/QtUdqZJ1AY/yqOwR4dgRHY2/TSFJB+1eE1WlqPlJcrvbM4QKE9Ud6uUizfy8LHn+l58vObxnk5yHEV0ghklf9adNvdaexZt2p9M3LcQ2CqZHbJvoy/6dvK/4CkRXhAYuGYU8lJoq3JpdLQFw3a2wdMc/sR8J8p7erJpPir1vM3LXV5e3B/hk04ECVc/6OtzLjwgUpSsJ4JXS7Yhnms5HZFmRnmAzWWVm4OIHjxnoxCq/18S/6Ffa9B19ht593pzVwKZvLbYfMGqTA4ILUC14cf4jzm+cLPH9mP5lm/qjbwySwLdj2J8wisMpDHKAjVwLY39XJEA9Kv+KQJH4J9Bvt/YvVKGPvnUqbLGcdP1vSTFk2cArQy/EPT+FoqPeknCueCz8BoHKCbqCfQmAU2wwQJCF+YekWwX/n9KjMiLNmW/FkLTluAsy3Uj1A+Dc2JRbexz7NxPVEjtXYgxCU5GCr86HdLGa+y3ejkr3//zGijFcpgTl5tIhxTH6dltOzW2/v/sFnuNAMoE0xeV4JzALW0qqFkbcN4EdwW6C5QGGoPy/oNa3Sci8=
+    on:
+        branch: master

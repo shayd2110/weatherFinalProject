@@ -48,7 +48,9 @@
 		"sweetalert": "^2.1.2",
 		"yup": "^0.29.3"
 	},
-	"devDependencies": {},
+	"devDependencies": {
+		"ruby": "^0.6.1"
+	},
 	"scripts": {
 		"test1": "cd ./client && eslint . --fix && (cd ../server && eslint . --fix)",
 		"start": "cd ./client && npm start  ",
