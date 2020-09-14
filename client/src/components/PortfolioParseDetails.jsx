@@ -1,9 +1,11 @@
-/* eslint-disable no-redeclare */
 import React from "react";
 import $ from "jquery";
 import moment from "moment";
 import { FaStar } from "react-icons/fa";
+import { WiRaindrop } from "react-icons/wi";
+
 const Skycons = require("skycons")(window);
+const arrow = require("../img/arrow.png");
 
 var weekday = ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי", "שבת"]; //to find day of the week
 var months = [
@@ -74,7 +76,7 @@ class PortfolioParseDetails extends React.Component {
 													<div id="col-arrow">
 														<img
 															id="arrow"
-															src=""
+															src={arrow}
 															alt=""
 														/>
 													</div>
@@ -84,6 +86,7 @@ class PortfolioParseDetails extends React.Component {
 												</div>
 												<div className="date">
 													<h id="clander-date"></h>
+													<br />
 													<h id="clock-time"> </h>
 												</div>
 											</div>
@@ -131,14 +134,7 @@ class PortfolioParseDetails extends React.Component {
 											<p id="day0-high-low"></p>
 											<div className="row" id="raindrop">
 												<div id="raindrop_icon">
-													<span
-														className="iconify"
-														id="iconify0"
-														data-icon=""
-														data-inline="false"
-													>
-														{" "}
-													</span>
+													<WiRaindrop />
 												</div>
 												<div id="rain_precip">
 													<p id="day0-precip"></p>
@@ -160,14 +156,7 @@ class PortfolioParseDetails extends React.Component {
 											<p id="day1-high-low"></p>
 											<div className="row" id="raindrop">
 												<div id="raindrop_icon">
-													<span
-														className="iconify"
-														id="iconify1"
-														data-icon=""
-														data-inline="false"
-													>
-														{" "}
-													</span>
+													<WiRaindrop />
 												</div>
 												<div id="rain_precip">
 													<p id="day1-precip"></p>
@@ -189,14 +178,7 @@ class PortfolioParseDetails extends React.Component {
 											<p id="day2-high-low"></p>
 											<div className="row" id="raindrop">
 												<div id="raindrop_icon">
-													<span
-														className="iconify"
-														id="iconify2"
-														data-icon=""
-														data-inline="false"
-													>
-														{" "}
-													</span>
+													<WiRaindrop />
 												</div>
 												<div id="rain_precip">
 													<p id="day2-precip"></p>
@@ -218,14 +200,7 @@ class PortfolioParseDetails extends React.Component {
 											<p id="day3-high-low"></p>
 											<div className="row" id="raindrop">
 												<div id="raindrop_icon">
-													<span
-														className="iconify"
-														id="iconify3"
-														data-icon=""
-														data-inline="false"
-													>
-														{" "}
-													</span>
+													<WiRaindrop />
 												</div>
 												<div id="rain_precip">
 													<p id="day3-precip"></p>
@@ -247,14 +222,7 @@ class PortfolioParseDetails extends React.Component {
 											<p id="day4-high-low"></p>
 											<div className="row" id="raindrop">
 												<div id="raindrop_icon">
-													<span
-														className="iconify"
-														id="iconify4"
-														data-icon=""
-														data-inline="false"
-													>
-														{" "}
-													</span>
+													<WiRaindrop />
 												</div>
 												<div id="rain_precip">
 													<p id="day4-precip"></p>
@@ -276,14 +244,7 @@ class PortfolioParseDetails extends React.Component {
 											<p id="day5-high-low"></p>
 											<div className="row" id="raindrop">
 												<div id="raindrop_icon">
-													<span
-														className="iconify"
-														id="iconify5"
-														data-icon=""
-														data-inline="false"
-													>
-														{" "}
-													</span>
+													<WiRaindrop />
 												</div>
 												<div id="rain_precip">
 													<p id="day5-precip"></p>
@@ -305,12 +266,7 @@ class PortfolioParseDetails extends React.Component {
 											<p id="day6-high-low"></p>
 											<div className="row" id="raindrop">
 												<div id="raindrop_icon">
-													<span
-														className="iconify"
-														id="iconify6"
-														data-icon=""
-														data-inline="false"
-													></span>
+													<WiRaindrop />
 												</div>
 												<div id="rain_precip">
 													<p id="day6-precip"></p>
@@ -341,32 +297,27 @@ class PortfolioParseDetails extends React.Component {
 		$("#wind").text(
 			`רוח: ${Math.ceil(this.state.data[3][1].windSpeed)} קמש`
 		);
-		//$("#arrow").attr("src", "img/arrow.png");
-		//$("#arrow").attr("alt", this.state.data[3][1].windBearing + " degrees");
-		// $("#arrow").attr(
-		//   "style",
-		//   `transform: rotate(${this.state.data[3][1].windBearing}deg);`
-		// );
+		$("#arrow").attr("alt", this.state.data[3][1].windBearing + " degrees");
+		$("#arrow").attr(
+			"style",
+			`transform: rotate(${this.state.data[3][1].windBearing}deg);`
+		);
 		var description = this.state.data[3][1].summary;
 		$("#weather-description").text(`${description}`);
 		var currently_time = new Date();
 		var str_time =
 			currently_time.getHours() + ":" + currently_time.getMinutes();
 
-		// currently_time.getHours() < 10
-		//   ? "0" + currently_time.getHours()
-		//   : currently_time.getHours() + ":" + (currently_time.getMinutes() < 10)
-		//   ? "0" + currently_time.getMinutes()
-		//   : currently_time.getMinutes();
-		$("#clock-time").text(`${str_time}`);
 		var dayOfWeek = weekday[currently_time.getDay()];
 		var dayOfMonth =
 			currently_time.getDate() < 10
 				? "0" + currently_time.getDate()
 				: currently_time.getDate();
 		var curMonth = months[currently_time.getMonth()];
-		var str_date = dayOfWeek + " " + dayOfMonth + " " + curMonth + ",";
+		var str_date = "," + dayOfWeek + " " + dayOfMonth + " " + curMonth;
 		$("#clander-date").text(`${str_date}`);
+		$("#clock-time").text(`${str_time}`);
+
 		var icon = this.state.data[3][1].icon;
 		const skycons = new Skycons({ color: "#293251" });
 		skycons.add(this.ref.current, icon);
@@ -374,10 +325,7 @@ class PortfolioParseDetails extends React.Component {
 
 		//now is the forcast
 
-		var day_i;
-
 		for (var day_i = 0; day_i < 7; day_i++) {
-			//var day = this.state.data[5][1].data[day_i];
 			var date = new Date(this.state.data[5][1].data[day_i].time * 1000);
 			if (day_i === 0) $("#day" + day_i).text("היום");
 			else $("#day" + day_i).text(`${weekday[date.getDay()]}`);
@@ -408,7 +356,6 @@ class PortfolioParseDetails extends React.Component {
 					100
 				}%`
 			);
-			$("#iconify" + day_i).attr("data-icon", "wi-raindrop");
 		}
 	}
 }
