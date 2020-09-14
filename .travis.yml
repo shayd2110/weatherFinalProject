@@ -3,6 +3,7 @@ node_js:
     - node
 cache: npm
 before_install:
+    - npm install npm-recursive-install
     - npm-recursive-install --skip-root
 install:
 script:
