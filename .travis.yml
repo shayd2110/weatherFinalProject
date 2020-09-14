@@ -10,6 +10,7 @@ script:
     - cd ./client && npm run build
 deploy:
     provider: heroku
+    skip-cleanup: true
     on:
         branch: master
     api_key: $HEROKU_KEY
