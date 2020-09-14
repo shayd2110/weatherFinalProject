@@ -161,7 +161,6 @@ updateUser = async (req, res) => {
 
 deleteUser = async (req, res) => {
 	const id = req.params.id;
-	console.log("id:", req.params.id);
 	try {
 		await User.findOneAndDelete({ _id: id }, (err, user) => {
 			if (err) {

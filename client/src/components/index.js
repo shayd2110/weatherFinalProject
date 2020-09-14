@@ -7,7 +7,6 @@ import Header from "./Header";
 import LinkToLogin from "./LinkToLogin";
 import ErrorNotice from "./ErrorNotice";
 import Wellcom from "./Wellcom/Wellcom";
-import Exit from "./Exit";
 import PortfolioMap from "./PortfolioMap";
 import PortfolioGrid from "./PortfolioGrid";
 import Waiting from "./Waiting";
@@ -29,7 +28,6 @@ export {
 	LinkToLogin,
 	ErrorNotice,
 	Wellcom,
-	Exit,
 	PortfolioMap,
 	PortfolioGrid,
 	Waiting,

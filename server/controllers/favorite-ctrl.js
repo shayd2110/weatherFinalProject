@@ -72,7 +72,6 @@ updateFavorite = async (req, res) => {
 };
 
 getFavoriteByUserId = async (req, res) => {
-	// console.log("req.params", req.params);
 	await Favorite.find({ userId: req.params.userId }, (err, favorite) => {
 		if (err) {
 			return res.status(400).json({ success: false, error: err });
@@ -83,7 +82,7 @@ getFavoriteByUserId = async (req, res) => {
 				.status(404)
 				.json({ success: false, error: "User favorite not found" });
 		}
-		// console.log("data: favorite", favorite);
+
 		return res.status(200).json({ success: true, data: favorite });
 	}).catch((err) => console.log(err));
 };

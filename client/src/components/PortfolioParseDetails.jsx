@@ -379,7 +379,7 @@ class PortfolioParseDetails extends React.Component {
 		for (var day_i = 0; day_i < 7; day_i++) {
 			//var day = this.state.data[5][1].data[day_i];
 			var date = new Date(this.state.data[5][1].data[day_i].time * 1000);
-			if (day_i == 0) $("#day" + day_i).text("היום");
+			if (day_i === 0) $("#day" + day_i).text("היום");
 			else $("#day" + day_i).text(`${weekday[date.getDay()]}`);
 			var dateMomentObject = moment(date).format("DD/MM/YYYY");
 			$("#date" + day_i).text(`${dateMomentObject}`);

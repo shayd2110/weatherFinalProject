@@ -99,10 +99,8 @@ class PortfolioMap extends Component {
 	}
 
 	componentDidMount = () => {
-		// debugger;
-		console.log(this.props.location.pathname == "/home-map");
 		if (navigator.geolocation) {
-			if (this.props.location.pathname == "/home-map") {
+			if (this.props.location.pathname === "/home-map") {
 				navigator.geolocation.getCurrentPosition((currentPos) => {
 					this.setState({
 						mapPosition: {
@@ -114,7 +112,6 @@ class PortfolioMap extends Component {
 					Geocode.fromLatLng(mapPosition.lat, mapPosition.lng).then(
 						(newAddress) => {
 							let full_address = newAddress.results[0];
-							let res = full_address.formatted_address.split(",");
 							this.openModal(
 								full_address.formatted_address,
 								mapPosition.lat,
@@ -133,10 +130,6 @@ class PortfolioMap extends Component {
 		var newLng = e.latLng.lng();
 		Geocode.fromLatLng(newLat, newLng).then((newAddress) => {
 			let full_address = newAddress.results[0];
-			let res = full_address.formatted_address.split(",");
-			let address = res[0];
-			let city = res[1];
-			let state = res[2];
 			this.openModal(
 				full_address.formatted_address,
 				newLat,
@@ -167,9 +160,9 @@ class PortfolioMap extends Component {
 		const url =
 			"https://maps.googleapis.com/maps/api/js?key=AIzaSyDYqZJa_Xoo3dJekgc4wOKiWHnNZK_Pr3k&language=he&region=IL&v=3.exp&libraries=geometry,drawing,places";
 
-		console.log(process.env.GOOGLE_MAP_API_KEY);
+		
 		const MapWithAMarker = withScriptjs(
-			withGoogleMap((props) => (
+			withGoogleMap(() => (
 				<GoogleMap
 					defaultZoom={8}
 					defaultCenter={{ lat: 31.767407, lng: 35.21038 }}

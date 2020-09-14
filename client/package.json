@@ -73,6 +73,7 @@
 	"devDependencies": {
 		"cleanup-dependencies": "0.0.6",
 		"eslint": "^6.6.0",
-		"eslint-plugin-react": "^7.20.6"
+		"eslint-plugin-react": "^7.20.6",
+		"eslint-plugin-react-hooks": "^4.1.2"
 	}
 }

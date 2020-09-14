@@ -3,14 +3,11 @@ import axios from "axios";
 export const port = process.env.PORT || 3000;
 
 export const baseURL4Real =
-	process.env.NODE_ENV == "development"
+	process.env.NODE_ENV === "development"
 		? "http://localhost:3000/api"
 		: "https://weather-final-project.herokuapp.com/api";
 export const api = axios.create({
 	baseURL: baseURL4Real,
-});
-const api2 = axios.create({
-	baseURL: "http://localhost:3000",
 });
 
 // user requests.

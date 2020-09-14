@@ -30,7 +30,7 @@ const Button = styled.button.attrs({
 `;
 
 function Login() {
-	const { userData, setUserData } = useContext(UserContext);
+	const { setUserData } = useContext(UserContext);
 	const [emailAddress, setEmailAddress] = useState();
 	const [password, setPassword] = useState();
 	const [isChecked, setIsChecked] = useState(false);
@@ -38,8 +38,8 @@ function Login() {
 		errorFound: false,
 		message: "",
 	});
-	const [redirect, setRedirect] = useState("");
-	const [canRedirect, setCanRedirect] = useState();
+	const [redirect] = useState("");
+	const [canRedirect] = useState();
 
 	const handleIncludeUser = async (e) => {
 		e.preventDefault();

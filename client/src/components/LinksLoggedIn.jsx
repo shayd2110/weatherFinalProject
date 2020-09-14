@@ -1,27 +1,10 @@
 import React, { Component, useContext } from "react";
-import { BrowserRouter, Router, Route, Redirect, Link } from "react-router-dom";
-import { Map } from "../pages";
+import { Link } from "react-router-dom";
 import { Settings } from "./";
 import { Modal, ModalManager, Effect } from "react-dynamic-modal";
 import Nav from "react-bootstrap/Nav";
 import UserContext from "../context/user-context";
-import UserFavoriteContext from "../context/userFavorite-context";
 import { GoX } from "react-icons/go";
-import Scroll from "react-scroll";
-import styled from "styled-components";
-import api from "../api";
-
-const Collapse = styled.div.attrs({
-	className: "collpase navbar-collapse",
-})``;
-
-const List = styled.div.attrs({
-	className: "navbar-nav mr-auto",
-})``;
-
-const Item = styled.div.attrs({
-	className: "collpase navbar-collapse",
-})``;
 
 const defaultStyles = {
 	overlay: {
@@ -38,8 +21,8 @@ const defaultStyles = {
 
 	content: {
 		position: "relative",
-		margin: "3% auto",
-		height: "35rem",
+		margin: "4% auto",
+		height: "38rem",
 		width: "60%",
 		border: "1px solid rgba(0, 0, 0, .2)",
 		background: "#fff",
@@ -63,7 +46,7 @@ class MyModal extends Component {
 				<div className="modal-header">
 					<div className="text-center">
 						<h5 id="saveChangeSuccessfully" hidden="true">
-							השינויים נשמרו בהצלחה !
+							!השינויים נשמרו בהצלחה
 						</h5>
 					</div>
 
@@ -93,9 +76,6 @@ class MyModal extends Component {
 
 export default function Links() {
 	const { userData, setUserData } = useContext(UserContext);
-	const { userFavoriteData, setUserFavoriteData } = useContext(
-		UserFavoriteContext
-	);
 
 	const logout = () => {
 		setUserData({

@@ -18,14 +18,8 @@ module.exports = {
 		"linebreak-style": ["error", "unix"],
 		quotes: ["error", "double"],
 		semi: ["error", "always"],
-		"no-undef": "off",
-		"no-unused-vars": "off",
-		"react/jsx-no-duplicate-props": "off",
-		"react/prop-types": "off",
-		"react/no-unescaped-entities": "off",
 		"react/no-deprecated": "off",
-		"react/no-direct-mutation-state": "off",
-		"no-empty": "off",
-		"react/no-string-refs": "off",
+
+		"react/prop-types": "off",
 	},
 };

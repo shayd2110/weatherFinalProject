@@ -39,7 +39,7 @@ class PersonalSettings extends Component {
 		const { myCitiesBefore, myCitiesAfter, userId } = this.state;
 		let isChanged = false;
 		for (let index = 0; index < myCitiesAfter.length; index++) {
-			if (myCitiesBefore[index].value != myCitiesAfter[index].value) {
+			if (myCitiesBefore[index].value !== myCitiesAfter[index].value) {
 				const payload = {
 					favoriteIndex: index + 1,
 					cityId: myCitiesAfter[index].value,
@@ -55,6 +55,7 @@ class PersonalSettings extends Component {
 
 	handleChange = (value, index) => {
 		$("#saveChangeSuccessfully").attr("hidden", true);
+		// eslint-disable-next-line react/no-direct-mutation-state
 		this.state.myCitiesAfter[index] = {
 			label: value.label,
 			value: value.value,

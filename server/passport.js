@@ -49,24 +49,6 @@ passport.use(
 		});
 	})
 );
-// passport.use(
-//   new jtwStrategy(
-//     {
-//       jwtFromRequest: cookieExtractor,
-//       secretOrKey: "LalaDadaCoder",
-//     },
-//     (payload, done) => {
-//       console.log("#########");
-//       console.log("jtwStrategy");
-//       console.log("#########");
-//       User.findById({ _id: payload.id }, (err, user) => {
-//         if (err) return done(err, false);
-//         if (user) return done(null, user);
-//         return done(null, false);
-//       });
-//     }
-//   )
-// );
 
 let opts = {};
 (opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken()), // eslint-disable-next-line indent

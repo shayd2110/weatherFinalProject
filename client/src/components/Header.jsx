@@ -1,14 +1,12 @@
 import React, { useContext } from "react";
 import { Redirect } from "react-router-dom";
-import Scroll from "react-scroll";
 import UserContext from "../context/user-context";
 import { Links, LinksLoggedIn, Logo } from "./";
 
 import Navbar from "react-bootstrap/Navbar";
 
 function Header() {
-	const { userData, setUserData } = useContext(UserContext);
-	const ScrollLink = Scroll.ScrollLink;
+	const { userData } = useContext(UserContext);
 
 	return (
 		<Navbar bg="dark" expand="lg" sticky="top" variant="dark">

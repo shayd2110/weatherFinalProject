@@ -5,7 +5,7 @@ import { PortfolioGrid, PortfolioMap } from "../components";
 import api from "../api";
 import { useEffect } from "react";
 
-function Home(props) {
+function Home() {
 	const { userData, setUserData } = useContext(UserContext);
 	var [userFavoritesCities, setUserFavoritesCities] = useState([
 		{},
@@ -46,6 +46,7 @@ function Home(props) {
 				},
 			});
 		});
+		// eslint-disable-next-line
 	}, []);
 
 	return (

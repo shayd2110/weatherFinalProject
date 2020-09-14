@@ -14,7 +14,6 @@ class PortfolioItemDetails extends Component {
 	}
 
 	async componentDidMount() {
-		console.log("lat", this.props.lng);
 		let _darkskyApiKey = "014dd470e25bffea4a246375af37ba17";
 		let _darkskyUnits = "ca"; // or "si" or "us"
 		let _darkskyLang = "he"; // hebrew
@@ -23,14 +22,15 @@ class PortfolioItemDetails extends Component {
 		const tempData = await response.json();
 		let tmpArray = [];
 
-		Object.entries(tempData).map((postData) => {
+		Object.entries(tempData).forEach((postData) => {
 			tmpArray.push(postData);
 		});
+
 		this.setState({ data: tmpArray, loading: false });
 	}
 
 	render() {
-		const { loading, data, lat, lng, cityName } = this.state;
+		const { loading, data, cityName } = this.state;
 		return (
 			<div className="modal-body text-center">
 				<div className="container">

@@ -1,6 +1,5 @@
 import React from "react";
-import { Element } from "react-scroll";
-import { FaStarOfDavid, FaStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 
 function Wellcom() {
 	return (

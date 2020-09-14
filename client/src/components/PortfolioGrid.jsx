@@ -11,13 +11,11 @@ class PortfolioGrid extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		console.log("change", nextProps.selectedCities);
+		
 		this.setState({ selectedCities: nextProps.selectedCities });
 	}
 
 	render() {
-		const { selectedCities } = this.state;
-
 		return (
 			<React.Fragment>
 				<section className="page-section portfolio" id="portfolio">

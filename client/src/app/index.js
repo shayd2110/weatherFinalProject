@@ -1,11 +1,5 @@
-import React, { Component, useState, useEffect } from "react";
-import {
-	BrowserRouter,
-	Router,
-	Route,
-	Switch,
-	Redirect,
-} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import {
 	Header,
 	Wellcom,
@@ -14,7 +8,7 @@ import {
 	PortfolioMap,
 	Waiting,
 } from "../components";
-import { UsersList, Signup, Login, UsersUpdate, Home } from "../pages";
+import { UsersList, Signup, Login, Home } from "../pages";
 import UserContext from "../context/user-context";
 import UserFavoriteContext from "../context/userFavorite-context";
 import api from "../api";
@@ -105,17 +99,14 @@ function App() {
 										<Route
 											exact
 											path="/"
-											exact
 											component={Login}
 										/>
 										<Route
 											path="/sign-in"
-											exact
 											component={Login}
 										/>
 										<Route
 											path="/sign-up"
-											exact
 											component={Signup}
 										/>
 									</Switch>

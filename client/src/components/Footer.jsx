@@ -95,8 +95,8 @@ class Footer extends Component {
 							<div className="col-lg-3">
 								<h4 className="text-center mb-4">:קצת עלינו</h4>
 								<p className="lead mb-0">
-									.סטודנטים למדעי המחשב, שנה אחרונה במכללת
-									תלי-חי
+									,סטודנטים שנה אחרונה <br />
+									.במכללת-תל-חי
 								</p>
 							</div>
 						</div>

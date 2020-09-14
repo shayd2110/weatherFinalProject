@@ -44,10 +44,11 @@ const defaultStyles = {
 
 	content: {
 		position: "relative",
-		margin: "3% auto",
-		width: "60%",
+		margin: "4% auto",
+		width: "25%",
 		border: "1px solid rgba(0, 0, 0, .2)",
-		background: "#fff",
+		background: "#2c3e50",
+		color: "#fff",
 		overflow: "auto",
 		borderRadius: "4px",
 		outline: "none",
@@ -57,7 +58,6 @@ const defaultStyles = {
 
 class MyModal extends Component {
 	render() {
-		console.log("here61");
 		const { data, onRequestClose } = this.props;
 		return (
 			<Modal
@@ -79,7 +79,7 @@ class MyModal extends Component {
 					</button>
 				</div>
 				<div className="modal-body">
-					<h2>{`שלום ${data.firstName} ${data.lastName} \n תהליך ההרשמה בוצע בהצלחה `}</h2>
+					<h5>{`!שלום ${data.firstName} ${data.lastName}, תהליך ההרשמה בוצע בהצלחה `}</h5>
 				</div>
 				<div className="modal-footer">
 					<button
@@ -158,7 +158,6 @@ class Signup extends Component {
 					error: false,
 					message: "",
 				});
-				console.log("here157");
 
 				this.setState({
 					firstName: "",
@@ -166,6 +165,8 @@ class Signup extends Component {
 					emailAddress: "",
 					password: "",
 				});
+
+				this.openModal(payload.firstName, payload.lastName);
 			} else {
 				this.setState({
 					error: !res.data.success,
