@@ -10,7 +10,5 @@ script:
     - cd ./client && npm run build
 deploy:
     provider: heroku
-    skip-cleanup: true
-    on:
-        branch: master
-    api_key: $HEROKU_KEY
+    api_key:
+        secure: vVmNwLNCdMSvuCv59//e//kX/huqSYphjoTIt7yBPO7r9p41LklmD31dmAg1NtRVw1hzeDZbD9zGrkOHJINg2DX001eD2Von5rBYUyMOOxJxwC2sjyFScr7/OLaPTpUq4PlsqkB3k9y+uX+FRDgNmMGcPlGZlo/cqJ77f/ROuCnn4zQS/DsxUZqpkKvG79EJKepdjBwt8EpnrIv5uuM3qtIed8U01HrhkrGak5IunJf6PepgE4rnRJ/J4nccxQTlDokg53Nolt1nGZQXipzm7+sRbgzGRZAHEk3di7yhKG12ARcEb/VFaMI1l5QA9763Bui1okp8AGFdppEETpXMHOZcX+M5u3SxZOof28MduUbBkr7a2OpVhVspYlydr0DCcbaj6bZa6jsAmqrXaNfHC4osdwSgpj99MZE2bMZkjBnYaWGe9fELm5ycrYcqYZ+CAmqlgjVl3RVW7DTOfkBmWJc5WRUPmfOiWEiTnIz0xdiBRTj2NlDqkxi9da+RqWO7ivOHykzYcm9/nbCsEwFc5g7G/MEjejewwclB39K2MQh6RwpBDMkejKzRfAn5EB2ly0OSO/kg1ODhfu2ULpxIT6yTn8L7s7yL3LDZrYlGdanADI6RN0VEUcDDmNuRejaD1uvjOHb7V4gttAFxtKce0tKPOSnW1kbI33paiG2bgm4=
