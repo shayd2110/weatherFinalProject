@@ -6,7 +6,7 @@ Final Project in course "An advanced Topics in software development" in Tel-Hai 
 
 Our heroku website:
 
-[![Our Website in Hroku](https://static.wixstatic.com/media/2e9396_103b37a8b01043a2a5b297b20c2b2e68~mv2.png/v1/fill/w_925,h_534,al_c,q_90,usm_0.66_1.00_0.01/2e9396_103b37a8b01043a2a5b297b20c2b2e68~mv2.webp)](https://weather-final-project.herokuapp.com)
+[![Our Website in Hroku (Click the image)](https://static.wixstatic.com/media/2e9396_103b37a8b01043a2a5b297b20c2b2e68~mv2.png/v1/fill/w_925,h_534,al_c,q_90,usm_0.66_1.00_0.01/2e9396_103b37a8b01043a2a5b297b20c2b2e68~mv2.webp)](https://weather-final-project.herokuapp.com)
 
 [![Heroku](http://heroku-badge.herokuapp.com/?app=weather-final-project)]
 
