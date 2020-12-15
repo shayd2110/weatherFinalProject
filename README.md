@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/shayd2110/weatherFinalProject.svg?branch=master)](https://travis-ci.com/shayd2110/weatherFinalProject)
 
-Final Project in course "An advanced Topics in software development" in Tel-Hai Collage
+Final Project in course "An advanced Topics in software development" in Tel-Hai College
 
 Our heroku website:
 
